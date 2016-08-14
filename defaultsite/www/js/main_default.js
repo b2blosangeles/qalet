@@ -71,7 +71,7 @@ app.config(function($routeProvider) {
 
 
 app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
-
+	$('.qalet_loading_progress_bar').modal();
 	$scope.postForm = function() {
 		$http({
 		  method: 'POST',
@@ -96,7 +96,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
-$('.qalet_loading_progress_bar').modal();
+	$('.qalet_loading_progress_bar').modal();
 	$http({
 	  method: 'GET',
 	  url: '/_git/list'
