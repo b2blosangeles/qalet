@@ -13,7 +13,7 @@
 					this.reset((spacename)?spacename:'');
 					break;							
 				case 'postForm':
-					this.showList();
+					this.postForm(req.body);
 					break;
 
 				case 'list':
@@ -43,6 +43,11 @@
 				
 			)	
 		}	
+
+		this.postForm = function(v) {
+			return V;
+		}	
+
 		
 		this.vhost = function(callback) {
 			var exec = require('child_process').exec;
