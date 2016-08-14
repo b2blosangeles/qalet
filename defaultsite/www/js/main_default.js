@@ -4,7 +4,7 @@ var app = angular.module('qaletApp', [
 ]);
 app.controller('mainController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 	
-$scope.sections={};
+	$scope.sections={};
 	
 	$scope.updateGit = function() {
 		$scope.progress_message = 'Apply git ...';
@@ -48,6 +48,15 @@ $scope.sections={};
 		
 	}
 
+	$scope.progress = function(code, message) {
+		$scope.progress_message = message;
+		if (code == 'on') {
+			$('.qalet_loading_progress_bar').modal();
+		} else {
+			$('.qalet_loading_progress_bar').modal('hide');
+		}
+	}	
+	
 	$scope.popup = function(code, message) {
 		$scope.popup_message = message;
 		if (code == 'on') {
@@ -73,16 +82,16 @@ app.config(function($routeProvider) {
 app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 	
 	$scope.postForm = function() {
-		$('.qalet_loading_progress_bar').modal();
+		$scope.$parent.progress('on', 'post form');
 		$http({
 		  method: 'POST',
 		  url: '/_git/postForm',
 		  data: $scope.form
 		}).then(function successCallback(response) {
 			var data = response.data;
-			$('.qalet_loading_progress_bar').modal('hide');			
+			$scope.$parent.progress('off');		
 		  }, function errorCallback(response) {
-				$('.qalet_loading_progress_bar').modal('hide');
+				$scope.$parent.progress('off');		
 				$scope.popup('on', {
 					title:'Error!',
 					body: $sce.trustAsHtml(response.data)
