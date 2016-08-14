@@ -71,8 +71,9 @@ app.config(function($routeProvider) {
 
 
 app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
-	$('.qalet_loading_progress_bar').modal();
+	
 	$scope.postForm = function() {
+		$('.qalet_loading_progress_bar').modal();
 		$http({
 		  method: 'POST',
 		  url: '/_git/postForm',
