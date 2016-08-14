@@ -86,7 +86,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 				console.log(response);
 				$scope.popup('on', {
 					title:'Error!',
-					body: $sce.trustAsHtml(response)
+					body: $sce.trustAsHtml(response.data)
 				});						
 			});			
 		console.log($scope.form);	
