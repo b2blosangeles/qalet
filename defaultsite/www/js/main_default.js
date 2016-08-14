@@ -74,7 +74,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 	$scope.postForm = function() {
 		
-		alert('posted');
+		console.log($scope.form);
 		
 	}
 
