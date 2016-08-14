@@ -7,7 +7,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	$scope.sections={};
 	
 	$scope.updateGit = function() {
-		$scope.progress_message = 'Apply git ...';
+		$scope.progress('on', 'Apply git ...');
 		$('.qalet_loading_progress_bar').modal();
 		$http({
 		  method: 'GET',
