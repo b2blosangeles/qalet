@@ -71,6 +71,14 @@ app.config(function($routeProvider) {
 
 
 app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
+
+	$scope.postForm = function() {
+		
+		alert('posted');
+		
+	}
+
+
 });	
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
