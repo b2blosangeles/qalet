@@ -73,11 +73,24 @@ app.config(function($routeProvider) {
 app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.postForm = function() {
-		
-		console.log($scope.form);
-		
-	}
-
+		$http({
+		  method: 'POST',
+		  url: '/_git/postForm',
+		  data: $scope.form
+		}).then(function successCallback(response) {
+			var data = response.data;
+			$('.qalet_loading_progress_bar').modal('hide');			
+		  }, function errorCallback(response) {
+				$('.qalet_loading_progress_bar').modal('hide');
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response)
+				});						
+			});			
+			console.log($scope.form);
+			
+		}
+	});	
 
 });	
 
