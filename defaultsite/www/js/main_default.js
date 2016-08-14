@@ -89,7 +89,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 				});						
 			});			
 			console.log($scope.form);	
-		}
+		});
 
 });	
 
