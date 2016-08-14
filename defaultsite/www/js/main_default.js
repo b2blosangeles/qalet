@@ -88,8 +88,8 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 					body: $sce.trustAsHtml(response)
 				});						
 			});			
-			console.log($scope.form);	
-		});
+		console.log($scope.form);	
+	};
 
 });	
 
