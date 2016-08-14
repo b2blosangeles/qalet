@@ -13,13 +13,13 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 		  method: 'GET',
 		  url: '/_git/'
 		}).then(function successCallback(response) {
-			$('.qalet_loading_progress_bar').modal('hide');
+			$scope.progress('off');
 			$scope.popup('on', {
 				title:'Success done git update',
 				body: $sce.trustAsHtml(response.data)
 			});				
 		  }, function errorCallback(response) {
-				$('.qalet_loading_progress_bar').modal('hide');
+				$scope.progress('off');
 				$scope.popup('on', {
 					title:'Error!',
 					body: $sce.trustAsHtml(response)
