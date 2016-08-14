@@ -45,7 +45,7 @@
 		}	
 
 		this.postForm = function(v) {
-			return V;
+			return v;
 		}	
 
 		
