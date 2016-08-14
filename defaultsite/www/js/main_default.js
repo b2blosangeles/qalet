@@ -103,7 +103,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
-	$('.qalet_loading_progress_bar').modal();
+	$scope.$parent.progress('on', 'get list');
 	$http({
 	  method: 'GET',
 	  url: '/_git/list'
