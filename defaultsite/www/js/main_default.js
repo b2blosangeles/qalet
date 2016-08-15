@@ -49,15 +49,18 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	}
 
 	$scope.progress = function(code, message) {
-		
 		$scope.progress_message = message;
-		$scope.$apply();
-		if (code == 'on') {
-			alert(message);
-			$('.qalet_loading_progress_bar').modal();
-		} else {
-			$('.qalet_loading_progress_bar').modal('hide');
-		}
+		$timeout(
+			function() {
+				if (code == 'on') {
+					alert(message);
+					$('.qalet_loading_progress_bar').modal();
+				} else {
+					$('.qalet_loading_progress_bar').modal('hide');
+				}				
+			}
+			
+		)
 	}	
 	
 	$scope.popup = function(code, message) {
