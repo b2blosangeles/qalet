@@ -51,6 +51,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	$scope.progress = function(code, message) {
 		
 		$scope.progress_message = message;
+		$scope.$apply();
 		if (code == 'on') {
 			alert(message);
 			$('.qalet_loading_progress_bar').modal();
