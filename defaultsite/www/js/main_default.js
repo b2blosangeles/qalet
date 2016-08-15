@@ -119,9 +119,9 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 		}
 		
 		$scope.microservice_list = data;
-		$('.qalet_loading_progress_bar').modal('hide');			
+	//	$scope.$parent.progress('off');		
 	  }, function errorCallback(response) {
-			$('.qalet_loading_progress_bar').modal('hide');
+			//$scope.$parent.progress('off');
 			$scope.popup('on', {
 				title:'Error!',
 				body: $sce.trustAsHtml(response)
