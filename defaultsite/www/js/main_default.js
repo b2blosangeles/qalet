@@ -49,9 +49,10 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	}
 
 	$scope.progress = function(code, message) {
-		alert(message);
+		
 		$scope.progress_message = message;
 		if (code == 'on') {
+			alert(message);
 			$('.qalet_loading_progress_bar').modal();
 		} else {
 			$('.qalet_loading_progress_bar').modal('hide');
