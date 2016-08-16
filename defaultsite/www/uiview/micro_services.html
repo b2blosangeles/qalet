@@ -10,19 +10,17 @@
 					<th>Name</th>
 					<th>Domain</th>
 					<th>GIT</th>
-					<th>Status</th>
 					<th></th>
-					<th></th>
+					<th><a href="JavaScript:void(0)" ng-click="addNew({})">Add New</a></th>
 				  </tr>
 				</thead>
 				<tbody>
 				  <tr ng-repeat="(key, value) in microservice_list">
-					<td>{{value.name}}</td>
+					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">{{value.name}}</a></td>
 					<td>{{value.domain}}</td>
 					<td>{{value.repository}}</td>
 					<td>{{value.status}}</td>
-					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">Delete</td>
-					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">Edit</td>
+					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">Delete</a></td>
 				  </tr>
 				</tbody>
 			  </table>	
