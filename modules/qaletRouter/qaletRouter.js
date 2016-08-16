@@ -91,6 +91,9 @@
 		}	
 		
 		this.load = function() {
+			this.callAfterVhost();
+			return true;			
+			
 			pkg.db.vhost.find({}, function (err, docs) {
 				if (!err) {
 					res.send(docs)
