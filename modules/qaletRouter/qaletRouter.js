@@ -91,11 +91,11 @@
 		}	
 		
 		this.load = function() {
-			
+			var me = this;
 
 			pkg.db.vhost.find({}, function (err, v) {
 				if (!err) {
-					this.callAfterVhost(v);
+					me.callAfterVhost(v);
 				//	res.send(docs)
 				} else {
 					res.send(err)
