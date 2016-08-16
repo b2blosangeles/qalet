@@ -117,7 +117,7 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 		  data: v
 		}).then(function successCallback(response) {
 			$scope.$parent.progress('off');	
-			alert('removed');
+			$scope.listVhost();
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
