@@ -76,7 +76,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 
 app.config(function($routeProvider) {
 	$routeProvider.when('/gitForm',    {templateUrl: '/uiview/git_form.html', reloadOnSearch: false, controller:'gitFormController'});
-	$routeProvider.when('/report',   {templateUrl: '/uiview/micro_service_report.html', reloadOnSearch: false, controller:'microserviceReportController'});
+	$routeProvider.when('/microservices',   {templateUrl: '/uiview/micro_services.html', reloadOnSearch: false, controller:'microservicesController'});
 	$routeProvider.when('/document',   {templateUrl: '/uiview/qalet_document.html', reloadOnSearch: false});
 	$routeProvider.when('/home',   {templateUrl: '/uiview/qalet_home.html', reloadOnSearch: false});
 	$routeProvider.when('/',   {templateUrl: '/uiview/qalet_home.html', reloadOnSearch: false});
@@ -107,7 +107,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 });	
 
-app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
+app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.postVhost = function() {
 		$scope.$parent.progress('on', 'post form');
