@@ -3,13 +3,6 @@
 	var obj =  function (pkg, env, req, res) {
 	
 		this.getSpacename = function(vhost) {
-			/*
-			var vhost = [];
-			try {
-				delete require.cache[env.root_path + '/microservice.config.json'];
-				vhost =  require(env.root_path + '/microservice.config.json');
-			} catch(err) {
-			}*/
 			for (var i=0; i < vhost.length; i++) {
 				if (vhost[i].domain){
 					var patt = new RegExp(vhost[i].domain, 'i');
@@ -42,10 +35,10 @@
 			res.write('Error! ' + err.message);
 			res.end();			
 		}			
-		this.runApi = function(v) {
+		this.runApi = function(v, vhost) {
 			
 			var me = this;
-			var spacename = this.getSpacename();
+			var spacename = this.getSpacename(vhost);
 			var space_dir = env.root_path + '/_microservice/' + spacename;
 			var p = space_dir + '/api/' + v;
 
@@ -121,7 +114,7 @@
 			
 			var tp = this.requestType();
 			if (tp !== false) {
-				this.runApi(tp);
+				this.runApi(tp, runApi);
 				return true;
 			}
 			
