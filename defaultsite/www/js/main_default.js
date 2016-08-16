@@ -109,6 +109,24 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
+	$scope.postForm = function() {
+		$scope.$parent.progress('on', 'post form');
+		$http({
+		  method: 'POST',
+		  url: '/_git/postVhost',
+		  data: $scope.form
+		}).then(function successCallback(response) {
+			var data = response.data;
+			 $scope.$parent.progress('off');		
+		  }, function errorCallback(response) {
+				$scope.$parent.progress('off');		
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response.data)
+				});						
+			});			
+	};
+
 	$scope.removeVhost = function(v) {
 	//	$scope.$parent.progress('on', 'remove form');
 		$http({
