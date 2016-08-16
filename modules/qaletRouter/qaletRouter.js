@@ -1,17 +1,7 @@
 (function () { 
 	
 	var obj =  function (pkg, env, req, res) {
-		
-					pkg.db.vhost.find({}, function (err, docs) {
-						if (!err) {
-							res.send(docs)
-						} else {
-							res.send(err)
-						}
-						
-					});		
-					
-		
+	
 		this.getSpacename = function() {
 			var vhost = [];
 			try {
@@ -101,17 +91,22 @@
 		}	
 		
 		this.load = function() {
+			pkg.db.vhost.find({}, function (err, docs) {
+				if (!err) {
+					res.send(docs)
+				} else {
+					res.send(err)
+				}
+				
+			});	
+		}	
+		
+		
+		this.callAfterVhost = function() {
 			var me = this;
 			var spacename = this.getSpacename();
 
-/*
-app.get(/_git\/(|[0-9a-z]+)$/i, function (req, res) {	
-	delete require.cache[__dirname + '/modules/gitModule/gitModule.js'];
-	var gitModule  = require(__dirname + '/modules/gitModule/gitModule.js');
-	var gm = new gitModule(pkg, env, req, res);
-	gm.load();
-});
-*/			
+	
 			var gitP = req.params[0].match(/_git\/(|.+)$/i);
 			if (gitP) {
 				delete require.cache[env.root_path + '/modules/gitModule/gitModule.js'];
