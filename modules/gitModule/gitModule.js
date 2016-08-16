@@ -45,6 +45,8 @@
 		}	
 
 		this.postForm = function(v) {
+			var CP = new pkg.crowdProcess();
+			
 			var _f = {};
 			_f['D1'] = function(cbk) {
 				pkg.db.vhost.remove({ "name":v['name']}, { multi: true }, function (err) {
