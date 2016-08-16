@@ -116,6 +116,7 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 		  url: '/_git/removeVhost',
 		  data: v
 		}).then(function successCallback(response) {
+			$scope.$parent.progress('off');	
 			alert('removed');
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
@@ -125,27 +126,29 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 				});						
 			});			
 	};	
-	
+	$scope.listVhost = function() {
+		$scope.$parent.progress('on', 'get list');
+		$http({
+		  method: 'GET',
+		  url: '/_git/list'
+		}).then(function successCallback(response) {
+			var data = response.data;
+			for (var i = 0; i < data.length; i++) {
+				data[i]['repository'] = data[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username/password)');
+			}
+			
+			$scope.microservice_list = data;
+			$scope.$parent.progress('off');		
+		  }, function errorCallback(response) {
+				$scope.$parent.progress('off');
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response)
+				});						
+			});			
+	}
+	$scope.listVhost();
 
-	$scope.$parent.progress('on', 'get list');
-	$http({
-	  method: 'GET',
-	  url: '/_git/list'
-	}).then(function successCallback(response) {
-		var data = response.data;
-		for (var i = 0; i < data.length; i++) {
-			data[i]['repository'] = data[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username/password)');
-		}
-		
-		$scope.microservice_list = data;
-		$scope.$parent.progress('off');		
-	  }, function errorCallback(response) {
-			$scope.$parent.progress('off');
-			$scope.popup('on', {
-				title:'Error!',
-				body: $sce.trustAsHtml(response)
-			});						
-		});	
 
 });	
 
