@@ -76,7 +76,7 @@
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['D1'] = function(cbk) {
-				pkg.db.vhost.remove({ _id:v.id}, { multi: true }, function (err) {
+				pkg.db.vhost.remove({ _id:v._id}, { multi: true }, function (err) {
 					cbk(err);
 				})				
 			}		
