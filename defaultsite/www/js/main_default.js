@@ -104,6 +104,24 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 			});			
 	};
 
+	$scope.removeVhost = function() {
+		$scope.$parent.progress('on', 'post form');
+		$http({
+		  method: 'POST',
+		  url: '/_git/postForm',
+		  data: $scope.form
+		}).then(function successCallback(response) {
+			var data = response.data;
+			 $scope.$parent.progress('off');		
+		  }, function errorCallback(response) {
+				$scope.$parent.progress('off');		
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response.data)
+				});						
+			});			
+	};	
+	
 });	
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
