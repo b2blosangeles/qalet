@@ -113,7 +113,7 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 		$scope.$parent.progress('on', 'post form');
 		$http({
 		  method: 'POST',
-		  url: '/_gitremoveForm',
+		  url: '/_git/removeForm',
 		  data: v
 		}).then(function successCallback(response) {
 			alert('removed');
