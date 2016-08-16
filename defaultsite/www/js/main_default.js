@@ -124,7 +124,8 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 	};	
 	
 	$scope.editVhost = function(v) {
-		$scope.form = v;		
+		if (v === false) delete $scope.form;
+		else $scope.form = v;		
 	};	
 	
 	$scope.listVhost = function() {
