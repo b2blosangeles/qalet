@@ -111,8 +111,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 		  url: '/_gitremoveForm',
 		  data: $scope.form
 		}).then(function successCallback(response) {
-			var data = response.data;
-			 $scope.$parent.progress('off');		
+			alert('removed');
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
