@@ -10,6 +10,7 @@
 						}
 						
 					});		
+					
 		
 		this.getSpacename = function() {
 			var vhost = [];
