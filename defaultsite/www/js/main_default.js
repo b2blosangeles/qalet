@@ -109,7 +109,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
-	$scope.postForm = function() {
+	$scope.postVhost = function() {
 		$scope.$parent.progress('on', 'post form');
 		$http({
 		  method: 'POST',
