@@ -77,7 +77,7 @@
 			
 			var _f = {};
 			_f['D1'] = function(cbk) {
-				pkg.db.vhost.remove({ "name":(v['name'])?v['name']:''}, { multi: true }, function (err) {
+				pkg.db.vhost.remove({ "name":(v)?v['name']:''}, { multi: true }, function (err) {
 					cbk(err);
 				})				
 			}		
