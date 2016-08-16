@@ -17,11 +17,12 @@
 				</thead>
 				<tbody>
 				  <tr ng-repeat="(key, value) in microservice_list">
-					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">Delete</a></td>
+					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 					<td><a href="JavaScript:void(0)" ng-click="editVhost(value)">{{value.name}}</a></td>
 					<td>{{value.domain}}</td>
 					<td>{{value.repository}}</td>
 					<td>{{value.status}}</td>
+					<td></td>
 				  </tr>
 				</tbody>
 			  </table>	
