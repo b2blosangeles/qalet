@@ -104,12 +104,12 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 			});			
 	};
 
-	$scope.removeVhost = function() {
+	$scope.removeVhost = function(v) {
 		$scope.$parent.progress('on', 'post form');
 		$http({
 		  method: 'POST',
 		  url: '/_gitremoveForm',
-		  data: $scope.form
+		  data: v
 		}).then(function successCallback(response) {
 			alert('removed');
 		  }, function errorCallback(response) {
