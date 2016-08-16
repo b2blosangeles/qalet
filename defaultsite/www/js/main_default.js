@@ -75,7 +75,6 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 
 
 app.config(function($routeProvider) {
-	$routeProvider.when('/gitForm',    {templateUrl: '/uiview/git_form.html', reloadOnSearch: false, controller:'gitFormController'});
 	$routeProvider.when('/microservices',   {templateUrl: '/uiview/micro_services.html', reloadOnSearch: false, controller:'microservicesController'});
 	$routeProvider.when('/document',   {templateUrl: '/uiview/qalet_document.html', reloadOnSearch: false});
 	$routeProvider.when('/home',   {templateUrl: '/uiview/qalet_home.html', reloadOnSearch: false});
@@ -83,29 +82,6 @@ app.config(function($routeProvider) {
 });
  
 
-
-app.controller('gitFormController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
-	
-	$scope.postForm = function() {
-		$scope.$parent.progress('on', 'post form');
-		$http({
-		  method: 'POST',
-		  url: '/_git/postVhost',
-		  data: $scope.form
-		}).then(function successCallback(response) {
-			var data = response.data;
-			 $scope.$parent.progress('off');		
-		  }, function errorCallback(response) {
-				$scope.$parent.progress('off');		
-				$scope.popup('on', {
-					title:'Error!',
-					body: $sce.trustAsHtml(response.data)
-				});						
-			});			
-	};
-
-
-});	
 
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
