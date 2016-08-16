@@ -12,10 +12,15 @@
 				case 'reset':
 					this.reset((spacename)?spacename:'');
 					break;							
-				case 'postForm':
-					this.postForm(req.body);
+				
+				case 'postVhost':
+					this.postVhost(req.body);
 					break;
-
+				
+				case 'removeVhost':
+					this.removeVhost(req.body);
+					break;
+					
 				case 'list':
 					this.showList();
 					break;	
@@ -44,7 +49,7 @@
 			)	
 		}	
 
-		this.postForm = function(v) {
+		this.postVhost  = function(v) {
 			var CP = new pkg.crowdProcess();
 			
 			var _f = {};
@@ -67,6 +72,25 @@
 			);				
 		}	
 
+		this.removeVhost = function(v) {
+			var CP = new pkg.crowdProcess();
+			
+			var _f = {};
+			_f['D1'] = function(cbk) {
+				pkg.db.vhost.remove({ "name":v['name']}, { multi: true }, function (err) {
+					cbk(err);
+				})				
+			}		
+			CP.serial(
+				_f,
+				function(data) {
+					res.send(data);
+				},
+				30000
+			);				
+		}			
+		
+		
 		
 		this.vhost = function(callback) {
 			var exec = require('child_process').exec;
