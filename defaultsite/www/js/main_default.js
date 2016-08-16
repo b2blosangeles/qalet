@@ -152,7 +152,7 @@ app.controller('microserviceReportController', function($rootScope, $scope, $loc
 		}).then(function successCallback(response) {
 			var data = response.data;
 			for (var i = 0; i < data.length; i++) {
-				data[i]['repository'] = data[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username/password)');
+				if (data[i]['repository']) data[i]['repository'] = data[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username/password)');
 			}
 			
 			$scope.microservice_list = data;
