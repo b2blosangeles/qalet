@@ -2,13 +2,14 @@
 	
 	var obj =  function (pkg, env, req, res) {
 	
-		this.getSpacename = function() {
+		this.getSpacename = function(vhost) {
+			/*
 			var vhost = [];
 			try {
 				delete require.cache[env.root_path + '/microservice.config.json'];
 				vhost =  require(env.root_path + '/microservice.config.json');
 			} catch(err) {
-			}
+			}*/
 			for (var i=0; i < vhost.length; i++) {
 				if (vhost[i].domain){
 					var patt = new RegExp(vhost[i].domain, 'i');
@@ -93,10 +94,9 @@
 		this.load = function() {
 			var me = this;
 
-			pkg.db.vhost.find({}, function (err, v) {
+			pkg.db.vhost.find({}, function (err, vhost) {
 				if (!err) {
-					me.callAfterVhost(v);
-				//	res.send(docs)
+					me.callAfterVhost(vhost);
 				} else {
 					res.send(err)
 				}
@@ -105,9 +105,9 @@
 		}	
 		
 		
-		this.callAfterVhost = function(v) {
+		this.callAfterVhost = function(vhost) {
 			var me = this;
-			var spacename = this.getSpacename();
+			var spacename = this.getSpacename(vhost);
 
 	
 			var gitP = req.params[0].match(/_git\/(|.+)$/i);
