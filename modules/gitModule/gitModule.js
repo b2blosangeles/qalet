@@ -125,7 +125,7 @@
 						
 					});
 				},
-				3000000
+				300000
 			);			
 
 			return true;
@@ -191,7 +191,7 @@
 					res.write('<hr>Done!');
 					res.end();
 				},
-				30000000
+				300000
 			);
 		}
 		this.reset = function(v) {
