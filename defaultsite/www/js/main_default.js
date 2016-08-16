@@ -104,6 +104,11 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 			});			
 	};
 
+
+});	
+
+app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
+
 	$scope.removeVhost = function(v) {
 		$scope.$parent.progress('on', 'post form');
 		$http({
@@ -121,9 +126,6 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 			});			
 	};	
 	
-});	
-
-app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.$parent.progress('on', 'get list');
 	$http({
