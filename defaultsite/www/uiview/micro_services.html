@@ -11,12 +11,12 @@
 					<th>Domain</th>
 					<th>GIT</th>
 					<th></th>
-					<th><a href="JavaScript:void(0)" ng-click="addNew({})">Add New</a></th>
+					<th><a href="JavaScript:void(0)" ng-click="editVhost({})">Add New</a></th>
 				  </tr>
 				</thead>
 				<tbody>
 				  <tr ng-repeat="(key, value) in microservice_list">
-					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)">{{value.name}}</a></td>
+					<td><a href="JavaScript:void(0)" ng-click="editVhost(value)">{{value.name}}</a></td>
 					<td>{{value.domain}}</td>
 					<td>{{value.repository}}</td>
 					<td>{{value.status}}</td>

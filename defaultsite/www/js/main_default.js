@@ -121,6 +121,11 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 				});						
 			});			
 	};	
+	
+	$scope.editVhost = function(v) {
+		$scope.form = v;		
+	};	
+	
 	$scope.listVhost = function() {
 		$scope.$parent.progress('on', 'get list');
 		$http({
