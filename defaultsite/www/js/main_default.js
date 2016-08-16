@@ -110,7 +110,7 @@ app.controller('gitFormController', function($rootScope, $scope, $location, $htt
 app.controller('microserviceReportController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.removeVhost = function(v) {
-		$scope.$parent.progress('on', 'post form');
+		$scope.$parent.progress('on', 'remove form');
 		$http({
 		  method: 'POST',
 		  url: '/_git/removeVhost',
