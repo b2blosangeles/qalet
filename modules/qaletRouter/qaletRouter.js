@@ -91,12 +91,12 @@
 		}	
 		
 		this.load = function() {
-			this.callAfterVhost();
-			return true;			
 			
-			pkg.db.vhost.find({}, function (err, docs) {
+
+			pkg.db.vhost.find({}, function (err, vhost) {
 				if (!err) {
-					res.send(docs)
+					this.callAfterVhost(vhost);
+				//	res.send(docs)
 				} else {
 					res.send(err)
 				}
@@ -105,7 +105,7 @@
 		}	
 		
 		
-		this.callAfterVhost = function() {
+		this.callAfterVhost = function(vhost) {
 			var me = this;
 			var spacename = this.getSpacename();
 
