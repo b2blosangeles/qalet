@@ -191,7 +191,7 @@
 					res.write('<hr>Done!');
 					res.end();
 				},
-				3000000
+				30000000
 			);
 		}
 		this.reset = function(v) {
