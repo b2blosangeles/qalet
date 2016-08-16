@@ -2,7 +2,7 @@
 	<div class = "row">
 		<div class="bs-callout bs-callout-warning highlight" id="callout-overview-dependencies"> 
 					
-			<form method="post" class="row">
+			<form class="row">
 				<div class="col-lg-2">
 					<div class="form-group ">
 						<label class="control-label " for="name">Name</label>
@@ -35,7 +35,13 @@
 </div>	
 <div class="container" ng-if="(!form)">
 	<div class = "row">
-		<a href="JavaScript:void(0)" ng-click="editVhost({})">Add a service</a>
+			<form class="row">			
+				<div class="col-lg-2">
+					<div class="form-group">
+						<input class="form-control btn btn-primary " name="button" type="button" value="Add a new service" ng-Click="editVhost({})"  />
+					</div>				
+				</div>	
+			</form>	
 	</div>	
 </div>	
 
