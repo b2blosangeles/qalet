@@ -2,7 +2,14 @@
 	
 	var obj =  function (pkg, env, req, res) {
 		
-		
+					pkg.db.vhost.find({}, function (err, docs) {
+						if (!err) {
+							res.send(docs)
+						} else {
+							res.send(err)
+						}
+						
+					});		
 		
 		this.getSpacename = function() {
 			var vhost = [];
