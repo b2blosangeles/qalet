@@ -1,5 +1,42 @@
 <div class="container">
 	<div class = "row">
+		<div class="bs-callout bs-callout-warning highlight" id="callout-overview-dependencies"> 
+					
+			<form method="post" class="row">
+				<div class="col-lg-2">
+					<div class="form-group ">
+						<label class="control-label " for="name">Name</label>
+						<input class="form-control" name="name" type="text" ng-model="form.name" />
+					</div>				
+				</div>
+				<div class="col-lg-2">
+				
+					<div class="form-group">
+						<label class="control-label " for="text">Domain</label>
+						<input class="form-control"  name="text" type="text"  ng-model="form.domain" />
+					</div>				
+				</div>							
+				<div class="col-lg-7">
+					<div class="form-group">
+						<label class="control-label " for="text">Git</label>
+						<input class="form-control" name="text" type="text"  ng-model="form.git" />
+					</div>				
+				</div>				
+				<div class="col-lg-1">
+					<div class="form-group">
+						<label class="control-label " for="text"></label>
+						<input class="form-control btn btn-primary " name="button" type="button" value="Save" ng-Click="postForm()"  />
+					</div>				
+				</div>	
+			</form>
+
+		</div>
+	</div>	
+</div>	
+
+
+<div class="container">
+	<div class = "row">
 		<div class="bs-callout bs-callout-warning highlight"> 
 
 			  <table class="table">
