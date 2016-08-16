@@ -94,7 +94,8 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		  data: $scope.form
 		}).then(function successCallback(response) {
 			var data = response.data;
-			 $scope.$parent.progress('off');		
+			$scope.$parent.progress('off');
+			delete $scope.form;	
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
