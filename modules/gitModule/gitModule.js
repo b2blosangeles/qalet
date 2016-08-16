@@ -74,10 +74,9 @@
 
 		this.removeVhost = function(v) {
 			var CP = new pkg.crowdProcess();
-			res.send(v);
 			var _f = {};
 			_f['D1'] = function(cbk) {
-				pkg.db.vhost.remove({ "name":(v)?v['name']:null}, { multi: true }, function (err) {
+				pkg.db.vhost.remove({ _id:v.id}, { multi: true }, function (err) {
 					cbk(err);
 				})				
 			}		
