@@ -45,11 +45,24 @@
 		}	
 
 		this.postForm = function(v) {
-			pkg.db.vhost.remove({ "name":v['name']}, { multi: true }, function (err) {
+			var _f = {};
+			_f['D1'] = function(cbk) {
+				pkg.db.vhost.remove({ "name":v['name']}, { multi: true }, function (err) {
+					cbk(err);
+				})				
+			}
+			_f['D2'] = function(cbk) {
 				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['git']}, function (err) {
-					res.send(v);
-				});
-			});				
+					cbk(err);
+				});				
+			}			
+			CP.serial(
+				_f,
+				function(data) {
+					res.send(data);
+				},
+				30000
+			);				
 		}	
 
 		
