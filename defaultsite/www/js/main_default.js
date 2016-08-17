@@ -106,6 +106,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 				)				
 			} else {
 				$scope.$parent.progress('off');
+				console.log(response);
 				alert(response.message);
 			}
 
