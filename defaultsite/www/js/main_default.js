@@ -67,7 +67,7 @@ app.config(function($routeProvider) {
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.updateGit = function(v) {
-		$scope.$parent.progress('on', 'Apply git ...');
+		$scope.$parent.progress('on', 'Git pull ' + ((v)?v:' All seervices ') + ' ...');
 		$http({
 		  method: 'GET',
 		  url: '/_git/'+v
