@@ -58,7 +58,7 @@
 			var CP = new pkg.crowdProcess();
 			
 			if (!v['name'] || !v['repository']) {
-				var message = ((!v['name'])?'Missing name':'') + ((!v['repository'])?'Missing repository':'');
+				var message = ((!v['name'])?'Missing name. ':'') + ((!v['repository'])?'Missing repository. ':'');
 				res.send({status:'error', message:message});
 				return true;
 			}
