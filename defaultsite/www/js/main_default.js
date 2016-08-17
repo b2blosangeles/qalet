@@ -35,12 +35,10 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 				if (code == 'on') {
 					$('.qalet_loading_progress_bar').modal();
 					
+				} else if (code == 'fastoff')  {
+					$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
 				} else {
-					if (removefade) {
-						$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
-					} else {
-						$('.qalet_loading_progress_bar').modal('hide');
-					}
+					$('.qalet_loading_progress_bar').modal('hide');
 				}				
 			}
 			
@@ -102,7 +100,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 			if (response.data.status == 'success') {
 				var data = response.data;
 				delete $scope.form;	
-				$scope.$parent.progress('off', true);
+				$scope.$parent.progress('fastoff');
 				$scope.listVhost();				
 			} else {
 				$scope.$parent.progress('off');				
