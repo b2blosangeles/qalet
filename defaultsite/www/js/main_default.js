@@ -102,7 +102,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 					function() {
 						$scope.listVhost();
 					}
-					,1000
+					,2000
 				)				
 			} else {
 				$scope.$parent.progress('off');
