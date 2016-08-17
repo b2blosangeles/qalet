@@ -109,7 +109,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 				
 				$scope.popup('on', {
 					title:'Error!',
-					body: response.data.message
+					body: $sce.trustAsHtml(response.data.message)
 				});	
 			}
 
