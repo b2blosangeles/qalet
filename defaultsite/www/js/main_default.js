@@ -97,6 +97,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 			var data = response.data;
 			$scope.$parent.progress('off');
 			delete $scope.form;	
+			$scope.listVhost();
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
@@ -107,16 +108,13 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 	};
 
 	$scope.removeVhost = function(v) {
-	//	$scope.$parent.progress('on', 'remove form');
 		$http({
 		  method: 'POST',
 		  url: '/_git/removeVhost',
 		  data: v
 		}).then(function successCallback(response) {
-		//	$scope.$parent.progress('off');	
 			$scope.listVhost();
-		  }, function errorCallback(response) {
-			//	$scope.$parent.progress('off');		
+		  }, function errorCallback(response) {	
 				$scope.popup('on', {
 					title:'Error!',
 					body: $sce.trustAsHtml(response.data)
