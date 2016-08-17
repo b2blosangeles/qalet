@@ -96,12 +96,12 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		}).then(function successCallback(response) {
 			var data = response.data;
 			delete $scope.form;	
+			$scope.$parent.progress('off');
 			$timeout(
 				function() {
-					$scope.$parent.progress('off');
 					$scope.listVhost();
 				}
-				,2000
+				,1000
 			)
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
