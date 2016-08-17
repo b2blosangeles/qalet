@@ -61,11 +61,7 @@
 				var message = ((!v['name'])?'Missing name. ':'') + ((!v['repository'])?'Missing repository. ':'');
 				res.send({status:'error', message:message});
 				return true;
-			}
-			if (!v['name']) {
-				res.send({status:'error', message:'Missing name'});
-				return true;
-			}			
+			}		
 			
 			var _f = {};			
 			
