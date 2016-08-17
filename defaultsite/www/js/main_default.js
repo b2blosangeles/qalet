@@ -36,7 +36,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 					$('.qalet_loading_progress_bar').modal();
 					
 				} else {
-					$('.qalet_loading_progress_bar').modal('hide');
+					$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
 				}				
 			}
 			
