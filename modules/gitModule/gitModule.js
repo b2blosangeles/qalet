@@ -28,7 +28,7 @@
 					this.microService('');
 					break;					
 				default:
-					res.send(req.params[0]);
+					res.send(req.params[0].replace('/_git/',''));
 				//	this.microService('');
 			}			
 
