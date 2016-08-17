@@ -66,11 +66,11 @@ app.config(function($routeProvider) {
 
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
-	$scope.updateGit = function() {
+	$scope.updateGit = function(v) {
 		$scope.$parent.progress('on', 'Apply git ...');
 		$http({
 		  method: 'GET',
-		  url: '/_git/'
+		  url: '/_git/'+v
 		}).then(function successCallback(response) {
 			$scope.$parent.progress('off');
 			$scope.$parent.popup('on', {
