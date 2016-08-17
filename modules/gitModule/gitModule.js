@@ -78,7 +78,23 @@
 				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['repository']}, function (err) {
 					cbk(err);
 				});				
-			}			
+			}		
+
+			_f['DR'] = function(cbk) {
+				pkg.fs.exists('_microservice/'+ v.name, function(exists) {
+					if (exists) {
+						exec('cd ' + '_microservice/'+ v.name + '&& git pull', function(err, out, code) {
+							var msg = '<b>Updated ' + v.name + ' repository</b>:<br>' + out;
+							cbk(msg.replace("\n", '<br>'));
+						});
+					} else {
+						exec('git clone ' + v.repository + ' ' + '_microservice/'+ v.name + '', function(err, out, code) {
+							var msg =  out;
+							cbk(msg.replace("\n", '<br>'));
+						});
+					}
+				});			
+			}	
 			CP.serial(
 				_f,
 				function(data) {
