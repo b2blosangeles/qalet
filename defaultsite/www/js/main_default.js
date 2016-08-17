@@ -97,7 +97,9 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 			var data = response.data;
 			$scope.$parent.progress('off');
 			delete $scope.form;	
-			$scope.listVhost();
+			$timeout(
+				$scope.listVhost,2000
+			)
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
