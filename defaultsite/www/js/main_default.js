@@ -33,9 +33,9 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 		$timeout(
 			function() {
 				if (code == 'on') {
-					if (!$('.qalet_loading_progress_bar').hasClass('in')) {
-						$('.qalet_loading_progress_bar').modal();
-					}
+					alert($('.qalet_loading_progress_bar').hasClass('in')); 
+					$('.qalet_loading_progress_bar').modal();
+					
 				} else {
 					
 					$('.qalet_loading_progress_bar').modal('hide');
@@ -100,15 +100,13 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 			if (response.data.status == 'success') {
 				var data = response.data;
 				delete $scope.form;	
-			//	$scope.$parent.progress('off');
-				$scope.listVhost();
-				/*
+				$scope.$parent.progress('off');
 				$timeout(
 					function() {
 						$scope.listVhost();
 					}
 					,2000
-				)*/				
+				)				
 			} else {
 				$scope.$parent.progress('off');				
 				
