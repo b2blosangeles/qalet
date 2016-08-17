@@ -28,8 +28,12 @@
 					this.microService('');
 					break;					
 				default:
-					res.send(req.params[0].replace('/_git/',''));
-				//	this.microService('');
+					var v = req.params[0].replace('/_git/','');
+					if (v != req.params[0]) {
+						me.microService(v);
+					} else {
+						me.send404(v);
+					}
 			}			
 
 		};	
