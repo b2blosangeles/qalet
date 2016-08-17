@@ -29,14 +29,11 @@
 					break;					
 				default:
 					var v = req.params[0].match(/^\/_git\/([^\/]+)$/);
-					res.send(v);
-					/*
-					if (v != req.params[0]) {
-						me.microService(v);
+					if (v) {
+						me.microService(v[1]);
 					} else {
-						me.send404(v);
+						me.send404(req.params[0]);
 					}
-					*/
 			}			
 
 		};	
