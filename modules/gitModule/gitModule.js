@@ -100,7 +100,7 @@
 				function(data) {
 					res.send(data);
 				},
-				30000
+				300000
 			);				
 		}	
 
