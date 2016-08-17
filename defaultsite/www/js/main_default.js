@@ -29,20 +29,14 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	}
 
 	$scope.progress = function(code, message, removefade) {
-		$scope.progress_message = message;
-	//	$timeout(
-	//		function() {
-				if (code == 'on') {
-					$('.qalet_loading_progress_bar').modal();
-					
-				} else if (code == 'fastoff')  {
-					$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
-				} else {
-					$('.qalet_loading_progress_bar').modal('hide');
-				}				
-	//		}
+		if (code == 'on') {
+			$('.qalet_loading_progress_bar').modal();
 			
-	//	)
+		} else if (code == 'fastoff')  {
+			$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
+		} else {
+			$('.qalet_loading_progress_bar').modal('hide');
+		}
 	}	
 	
 	$scope.popup = function(code, message) {
@@ -121,13 +115,16 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 	};
 
 	$scope.removeVhost = function(v) {
+		$scope.$parent.progress('on', ' Remove service ...');
 		$http({
 		  method: 'POST',
 		  url: '/_git/removeVhost',
 		  data: v
 		}).then(function successCallback(response) {
+			$scope.$parent.progress('fastoff');
 			$scope.listVhost();
 		  }, function errorCallback(response) {	
+				$scope.$parent.progress('fastoff');
 				$scope.popup('on', {
 					title:'Error!',
 					body: $sce.trustAsHtml(response.data)
