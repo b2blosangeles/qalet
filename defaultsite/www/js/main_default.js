@@ -6,27 +6,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 	
 	$scope.sections={};
 	
-	$scope.updateGit = function() {
-		$scope.progress('on', 'Apply git ...');
-		$('.qalet_loading_progress_bar').modal();
-		$http({
-		  method: 'GET',
-		  url: '/_git/'
-		}).then(function successCallback(response) {
-			$scope.progress('off');
-			$scope.popup('on', {
-				title:'Success done git update',
-				body: $sce.trustAsHtml(response.data)
-			});				
-		  }, function errorCallback(response) {
-				$scope.progress('off');
-				$scope.popup('on', {
-					title:'Error!',
-					body: $sce.trustAsHtml(response)
-				});						
-			});	
-		
-	}
+
 	
 	$scope.parkingService = function() {
 		if (!$scope.sections.git_form) $scope.sections.git_form = true;	
@@ -85,6 +65,28 @@ app.config(function($routeProvider) {
 
 
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
+
+	$scope.updateGit = function() {
+		$scope.progress('on', 'Apply git ...');
+		$('.qalet_loading_progress_bar').modal();
+		$http({
+		  method: 'GET',
+		  url: '/_git/'
+		}).then(function successCallback(response) {
+			$scope.progress('off');
+			$scope.popup('on', {
+				title:'Success done git update',
+				body: $sce.trustAsHtml(response.data)
+			});				
+		  }, function errorCallback(response) {
+				$scope.progress('off');
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response)
+				});						
+			});	
+		
+	}
 
 	$scope.postVhost = function() {
 		$scope.$parent.progress('on', 'post form');
