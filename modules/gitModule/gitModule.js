@@ -28,7 +28,7 @@
 					this.microService('');
 					break;					
 				default:
-					me.send404(req.params[0]);
+					me.send(req.params[0]);
 				//	this.microService('');
 			}			
 
