@@ -63,7 +63,7 @@
 				})				
 			}
 			_f['D2'] = function(cbk) {
-				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['git']}, function (err) {
+				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['repository']}, function (err) {
 					cbk(err);
 				});				
 			}			
