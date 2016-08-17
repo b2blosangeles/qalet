@@ -70,7 +70,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		$scope.$parent.progress('on', 'Git pull ' + ((v)?v:' All seervices ') + ' ...');
 		$http({
 		  method: 'GET',
-		  url: '/_git/'+v
+		  url: '/_git/' + ((v)?v:'')
 		}).then(function successCallback(response) {
 			$scope.$parent.progress('off');
 			$scope.$parent.popup('on', {
