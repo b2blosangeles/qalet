@@ -28,7 +28,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 		
 	}
 
-	$scope.progress = function(code, message) {
+	$scope.progress = function(code, message, removefade) {
 		$scope.progress_message = message;
 		$timeout(
 			function() {
@@ -36,7 +36,11 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 					$('.qalet_loading_progress_bar').modal();
 					
 				} else {
-					$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
+					if (removefade) {
+						$('.qalet_loading_progress_bar').removeClass("fade").modal('hide');
+					} else {
+						$('.qalet_loading_progress_bar').modal('hide');
+					}
 				}				
 			}
 			
