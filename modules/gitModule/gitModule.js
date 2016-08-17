@@ -84,7 +84,7 @@
 				pkg.fs.exists('_microservice/'+ v.name, function(exists) {
 					if (exists) {
 						exec('cd ' + '_microservice/'+ v.name + '&& git pull', function(err, out, code) {
-							var msg = '<b>Updated ' + v.name + ' repository</b>:<br>' + out;
+							var msg = out;
 							cbk(msg.replace("\n", '<br>'));
 						});
 					} else {
