@@ -56,7 +56,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 
 app.config(function($routeProvider) {
 	$routeProvider.when('/microservices',   {templateUrl: '/uiview/micro_services.html', reloadOnSearch: false, controller:'microservicesController'});
-	$routeProvider.when('/report',   {templateUrl: '/uiview/coming_soon.html', reloadOnSearch: false});
+//	$routeProvider.when('/report',   {templateUrl: '/uiview/coming_soon.html', reloadOnSearch: false});
 	$routeProvider.when('/document',   {templateUrl: '/uiview/qalet_document.html', reloadOnSearch: false});
 	$routeProvider.when('/home',   {templateUrl: '/uiview/qalet_home.html', reloadOnSearch: false});
 	$routeProvider.when('/',   {templateUrl: '/uiview/qalet_home.html', reloadOnSearch: false});
