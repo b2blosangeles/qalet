@@ -88,7 +88,7 @@
 			_f['D2'] = function(cbk) {
 				pkg.fs.exists('_microservice/'+ v.name, function(exists) {
 					if (exists) {
-						exec('rm ' + '_microservice/'+ v.name, function(err, out, code) {
+						exec('rm -fr ' + '_microservice/'+ v.name, function(err, out, code) {
 							cbk(true);
 						});
 					} else {
