@@ -77,6 +77,7 @@
 		}	
 
 		this.removeVhost = function(v) {
+			var exec = require('child_process').exec;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['D1'] = function(cbk) {
