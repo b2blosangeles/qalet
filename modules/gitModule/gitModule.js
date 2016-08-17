@@ -63,6 +63,17 @@
 				})				
 			}
 			_f['D2'] = function(cbk) {
+				pkg.fs.exists('_microservice/'+ v.name, function(exists) {
+					if (exists) {
+						exec('rm -fr ' + '_microservice/'+ v.name, function(err, out, code) {
+							cbk(true);
+						});
+					} else {
+						cbk(false);
+					}
+				});					
+			}				
+			_f['D3'] = function(cbk) {
 				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['repository']}, function (err) {
 					cbk(err);
 				});				
