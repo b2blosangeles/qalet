@@ -34,6 +34,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 			function() {
 				if (code == 'on') {
 					$('.qalet_loading_progress_bar').modal();
+					alert($('.qalet_loading_progress_bar').hasClass('in')); 
 				} else {
 					$('.qalet_loading_progress_bar').modal('hide');
 				}				
