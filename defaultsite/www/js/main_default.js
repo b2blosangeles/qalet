@@ -99,12 +99,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 				var data = response.data;
 				delete $scope.form;	
 				$scope.$parent.progress('off');
-				$timeout(
-					function() {
-						$scope.listVhost();
-					}
-					,2000
-				)				
+				$scope.listVhost();				
 			} else {
 				$scope.$parent.progress('off');				
 				
