@@ -82,7 +82,7 @@
 				});					
 			}				
 			_f['D3'] = function(cbk) {
-				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['repository']}, function (err) {
+				pkg.db.vhost.insert({ name: v['name'],  domain: v['domain'],  repository:v['repository'], created:new Date()}, function (err) {
 					cbk(err);
 				});				
 			}		
