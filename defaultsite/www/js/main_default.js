@@ -94,15 +94,21 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		  url: '/_git/postVhost',
 		  data: $scope.form
 		}).then(function successCallback(response) {
-			var data = response.data;
-			delete $scope.form;	
-			$scope.$parent.progress('off');
-			$timeout(
-				function() {
-					$scope.listVhost();
-				}
-				,1000
-			)
+			if (response.status == 'success') {
+				var data = response.data;
+				delete $scope.form;	
+				$scope.$parent.progress('off');
+				$timeout(
+					function() {
+						$scope.listVhost();
+					}
+					,1000
+				)				
+			} else {
+				$scope.$parent.progress('off');
+				alert(response.message);
+			}
+
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');		
 				$scope.popup('on', {
