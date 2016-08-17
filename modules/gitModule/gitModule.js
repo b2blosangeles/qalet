@@ -205,7 +205,7 @@
 			CP.serial(
 				_f,
 				function(data) {
-					pkg.db.vhost.find({}, function (err, docs) {
+					pkg.db.vhost.find({}).exec(function (err, docs) {
 						if (!err) {
 							callback(docs)
 						} else {
