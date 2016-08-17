@@ -67,14 +67,13 @@ app.config(function($routeProvider) {
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
 
 	$scope.updateGit = function() {
-		$scope.progress('on', 'Apply git ...');
-		$('.qalet_loading_progress_bar').modal();
+		$scope.$parent.progress('on', 'Apply git ...');
 		$http({
 		  method: 'GET',
 		  url: '/_git/'
 		}).then(function successCallback(response) {
-			$scope.progress('off');
-			$scope.popup('on', {
+			$scope.$parent.progress('off');
+			$scope.$parent.popup('on', {
 				title:'Success done git update',
 				body: $sce.trustAsHtml(response.data)
 			});				
