@@ -100,7 +100,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 			if (response.data.status == 'success') {
 				var data = response.data;
 				delete $scope.form;	
-				$scope.$parent.progress('off');
+			//	$scope.$parent.progress('off');
 				$scope.listVhost();
 				/*
 				$timeout(
