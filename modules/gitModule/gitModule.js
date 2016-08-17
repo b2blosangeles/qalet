@@ -79,7 +79,12 @@
 				pkg.db.vhost.remove({ _id:v._id}, { multi: true }, function (err) {
 					cbk(err);
 				})				
-			}		
+			}	
+			_f['D2'] = function(cbk) {
+				pkg.db.vhost.remove({ _id:v._id}, { multi: true }, function (err) {
+					cbk(err);
+				})				
+			}			
 			CP.serial(
 				_f,
 				function(data) {
