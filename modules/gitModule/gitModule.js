@@ -85,9 +85,15 @@
 				})				
 			}	
 			_f['D2'] = function(cbk) {
-				pkg.db.vhost.remove({ _id:v._id}, { multi: true }, function (err) {
-					cbk(err);
-				})				
+				pkg.fs.exists('_microservice/'+ v.name, function(exists) {
+					if (exists) {
+						exec('rm ' + '_microservice/'+ v.name, function(err, out, code) {
+							cbk(true);
+						});
+					} else {
+						cbk(false);
+					}
+				});					
 			}			
 			CP.serial(
 				_f,
@@ -98,7 +104,7 @@
 			);				
 		}			
 		
-		
+	
 		
 		this.vhost = function(callback) {
 			var exec = require('child_process').exec;
