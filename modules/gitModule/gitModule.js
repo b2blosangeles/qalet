@@ -28,7 +28,7 @@
 					this.microService('');
 					break;					
 				default:
-					var v = req.params[0].match(/^\/_git\/([^\/])$/);
+					var v = req.params[0].match(/^\/_git\/([^\/]+)$/);
 					res.send(v);
 					/*
 					if (v != req.params[0]) {
