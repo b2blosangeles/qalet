@@ -94,7 +94,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		  url: '/_git/postVhost',
 		  data: $scope.form
 		}).then(function successCallback(response) {
-			if (response.status == 'success') {
+			if (response.data.status == 'success') {
 				var data = response.data;
 				delete $scope.form;	
 				$scope.$parent.progress('off');
@@ -105,9 +105,12 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 					,2000
 				)				
 			} else {
-				$scope.$parent.progress('off');
-				console.log(response);
-				alert(response.message);
+				$scope.$parent.progress('off');				
+				
+				$scope.popup('on', {
+					title:'Error!',
+					body: response.data.message
+				});	
 			}
 
 		  }, function errorCallback(response) {
