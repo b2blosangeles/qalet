@@ -11,8 +11,8 @@
 					<th>Domain</th>
 					<th>GIT</th>
 					<th></th>
-					<th></th>
-					<th></th>
+					<th>Refresh</th>
+					<th>Demo</th>
 				  </tr>
 				</thead>
 				<tbody>
@@ -20,15 +20,13 @@
 					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 					<td>{{value.name}} <a href="JavaScript:void(0)" ng-click="editVhost(value)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 					<td>{{value.domain}}</td>
-					<td>{{value.repository}}</td>
-					<td>{{value.status}}</td>
-					<td>{{(value.is_demo)?'Demo':''}}</td>
-					<th>
-						<a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-						&nbsp;
+					<td>{{value.repository}}({{(value.is_demo)?'Demo':''}})</td>
+					<td></td>
+					<td><a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh" aria-hidden="true"></i></a></td>
+					<td>
 						<i class="fa fa-check text-success" aria-hidden="true" ng-if="value.ready"></i>
 						<i class="fa fa-exclamation-circle text-danger" aria-hidden="true" ng-if="!value.ready"></i>
-					</th>
+					</td>
 				  </tr>
 				</tbody>
 			  </table>	
