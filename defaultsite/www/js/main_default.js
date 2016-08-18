@@ -162,12 +162,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		  method: 'GET',
 		  url: '/_git/list'
 		}).then(function successCallback(response) {
-			var data = response.data;
-			for (var i = 0; i < data.length; i++) {
-				if (data[i]['repository']) data[i]['repository'] = data[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username:password)');
-			}
-			
-			$scope.microservice_list = data;
+			$scope.microservice_list = response.data;
 			$scope.$parent.progress('off');		
 		  }, function errorCallback(response) {
 				$scope.$parent.progress('off');

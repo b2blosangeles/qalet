@@ -51,6 +51,9 @@
 			var me = this;
 			me.vhost(
 				function(vhost) {
+					for (var i = 0; i < vhost.length; i++) {
+						if (vhost[i]['repository']) vhost[i]['repository'] = vhost[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username:password)');
+					}					
 					res.send(vhost);
 				}
 				
