@@ -47,14 +47,42 @@
 			res.end();		
 		}	
 
+		
+						
+		
+		
 		this.showList = function() {
 			var me = this;
+			var CP = new pkg.crowdProcess();
+			var _f = {};
+			
 			me.vhost(
 				function(vhost) {
 					for (var i = 0; i < vhost.length; i++) {
 						if (vhost[i]['repository']) vhost[i]['repository'] = vhost[i]['repository'].replace(/\/\/([^\:]+):([^\@]+)/i, '//(username:password)');
-					}					
-					res.send(vhost);
+						_f['D' + i] = (function(i) {
+									return function(cbk){
+										
+										pkg.fs.exists('_microservice/'+ vhost[i]['name'], function(exists) {
+											if (exists) {
+												vhost[i]['ready'] = true;
+											} else {
+												vhost[i]['ready'] = false;
+											}
+											cbk(true);
+										});										
+									}
+									
+								})(i);	
+					}
+					CP.serial(
+						_f,
+						function(data) {
+							res.send(vhost);
+						},
+						300000
+					);					
+					
 				}
 				
 			)	
