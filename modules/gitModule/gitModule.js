@@ -168,6 +168,7 @@
 					return function(cbk){
 						pkg.db.vhost.find({ "name": vhost[i]['name']}, function (err, docs) {
 							if (!docs || !docs[0]) {
+								vhost[i].is_demo = true;
 								pkg.db.vhost.insert(vhost[i], function (err) {
 									pkg.fs.exists('_microservice/'+ vhost[i]['name'], function(exists) {
 										if (exists) {
