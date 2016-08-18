@@ -140,7 +140,47 @@
 			);				
 		}			
 		
-	
+		this.loadDemo = function(v) {
+			var exec = require('child_process').exec;			try {
+			var CP = new pkg.crowdProcess();
+			
+			delete require.cache[env.root_path + '/microservice.config.json'];
+			var vhost =  require(env.root_path + '/microservice.config.json');
+			} catch(err) {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.write('err.message');
+				res.end();
+				return false;	
+			}
+			var CP = new pkg.crowdProcess();
+			
+			var _f = {};
+			for (var i = 0; i < vhost.length; i++) {
+				
+				_f['D' + i] = (function(i) {
+					return function(cbk){
+						pkg.db.vhost.find({ "name": vhost[i]['name']}, function (err, docs) {
+							if (!docs || !docs[0]) {
+								pkg.db.vhost.insert(vhost[i], function (err) {
+									cbk(true);
+								});					  
+							} else {
+								cbk(true);
+							}
+						});		
+					}
+					
+				})(i);
+			}
+				
+			CP.serial(
+				_f,
+				function(data) {
+					res.send(data);
+				},
+				30000
+			);				
+		}		
 		
 		this.vhost = function(callback) {
 			var exec = require('child_process').exec;
