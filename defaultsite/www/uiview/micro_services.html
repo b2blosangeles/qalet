@@ -9,8 +9,9 @@
 					<th></th>
 					<th>Name</th>
 					<th>Domain</th>
-					<th>GIT</th>
 					<th>Demo</th>
+					<th>GIT</th>
+					
 					<th>Refresh</th>
 					<th>Demo</th>
 				  </tr>
@@ -20,8 +21,8 @@
 					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 					<td>{{value.name}} <a href="JavaScript:void(0)" ng-click="editVhost(value)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 					<td>{{value.domain}}</td>
+					<td align="center">{{(value.is_demo)?'Y':''}}</td>
 					<td>{{value.repository}}</td>
-					<td>({{(value.is_demo)?'Y':''}})</td>
 					<td><a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh pull-right" aria-hidden="true"></i></a></td>
 					<td>
 						<i class="fa fa-check text-success pull-right" aria-hidden="true" ng-if="value.ready"></i>
