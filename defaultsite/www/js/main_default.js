@@ -69,7 +69,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 		$scope.$parent.progress('on', ' Sending reboot request ...');
 		$http({
 		  method: 'GET',
-		  url: '/_git/reboot')
+		  url: '/_git/reboot'
 		}).then(function successCallback(response) {
 			$scope.$parent.progress('off');
 			$scope.$parent.popup('on', {
