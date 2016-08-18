@@ -160,7 +160,7 @@
 			}
 
 			var _f = {};
-
+			/*
 			for (var i = 0; i < vhost.length; i++) {
 				
 				_f['D' + i] = (function(i) {
@@ -190,6 +190,7 @@
 				
 
 			}
+			*/
 			_f['E'] = function(cbk) {
 				if (env.vhost_cnt > 100) {
 					pkg.db.vhost.persistence.persistCachedDatabase(function() {
