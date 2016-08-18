@@ -330,14 +330,10 @@
 		}
 		this.reboot = function() {
 			var exec = require('child_process').exec;
-			exec('shutdown -r +1', function(err, out, code) {
-				res.writeHead(200, {'Content-Type': 'text/html'});
-				res.write('Root repository updated:<br/>');
-				res.write(out.replace("\n", '<br>'));
-				res.write('<br/>Reboot in 1 menute. ');
-				res.end();							
-						
-			});	
+			exec('shutdown -r +1', function(err, out, code) {});	
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.write('<br/>Server will reboot in one menute. ');
+			res.end();			
 		
 		}		
 	};
