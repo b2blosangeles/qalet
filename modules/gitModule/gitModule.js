@@ -180,9 +180,16 @@
 			CP.serial(
 				_f,
 				function(data) {
-					res.send(data);
+					pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
+						if (!err) {
+							res.send(docs)
+						} else {
+							res.send(err)
+						}
+						
+					});
 				},
-				30000
+				300000
 			);				
 		}		
 		
