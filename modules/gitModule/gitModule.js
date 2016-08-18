@@ -20,6 +20,10 @@
 				case 'removeVhost':
 					this.removeVhost(req.body);
 					break;
+
+				case 'loadDemo':
+					this.loadDemo();
+					break;
 					
 				case 'list':
 					this.showList();
@@ -187,50 +191,7 @@
 			var CP = new pkg.crowdProcess();
 
 			if (!env.vhost_cnt)  env.vhost_cnt = 1;
-			
-			
-			try {
-				delete require.cache[env.root_path + '/microservice.config.json'];
-				var vhost =  require(env.root_path + '/microservice.config.json');
-			} catch(err) {
-				res.writeHead(200, {'Content-Type': 'text/html'});
-				res.write('err.message');
-				res.end();
-				return false;	
-			}
-
 			var _f = {};
-			/*
-			for (var i = 0; i < vhost.length; i++) {
-				
-				_f['D' + i] = (function(i) {
-					return function(cbk){
-						pkg.db.vhost.find({ "name": vhost[i]['name']}, function (err, docs) {
-							if (!docs || !docs[0]) {
-								pkg.db.vhost.insert(vhost[i], function (err) {
-									cbk(true);
-								});
-							} else if (
-								docs[0]['domain'] != vhost[i]['domain'] || docs[0]['repository'] != vhost[i]['repository'] ||
-								docs[0]['autopull'] != vhost[i]['autopull'] 
-							) {
-								pkg.db.vhost.remove({ "name": vhost[i]['name']}, { multi: true }, function (err) {
-									pkg.db.vhost.insert(vhost[i], function (err) {
-										cbk(true);
-									});
-								});						  
-							} else {
-								cbk(true);
-							}
-						});	
-							
-					}
-					
-				})(i);
-				
-
-			}
-			*/
 			_f['E'] = function(cbk) {
 				if (env.vhost_cnt > 100) {
 					pkg.db.vhost.persistence.persistCachedDatabase(function() {
