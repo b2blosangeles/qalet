@@ -36,7 +36,7 @@
 			res.end();			
 		}			
 		this.runApi = function(v, vhost) {
-				res.send(v);
+				
 			return true;	
 			var me = this;
 			var spacename = this.getSpacename(vhost);
@@ -116,6 +116,10 @@
 			}
 			
 			var tp = this.requestType();
+			res.send(tp);
+			return false;
+			
+			
 			if (tp !== false) {
 				this.runApi(tp, runApi);
 				return true;
