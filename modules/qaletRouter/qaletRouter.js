@@ -36,14 +36,14 @@
 			res.end();			
 		}			
 		this.runApi = function(v, vhost) {
-			
+				res.send(v);
+			return true;	
 			var me = this;
 			var spacename = this.getSpacename(vhost);
 			var space_dir = env.root_path + '/_microservice/' + spacename;
 			var p = space_dir + '/api/' + v;
 
-			res.send(p);
-			return true;
+	
 			
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
