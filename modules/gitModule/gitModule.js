@@ -4,10 +4,10 @@
 			var me = this;
 			switch(cmd) {
 				case 'root':
-					this.root(false);
+					this.root();
 					break;
-				case 'rootreboot':
-					this.root(true);
+				case 'reboot':
+					this.reboot();
 					break;					
 				case 'reset':
 					this.reset((spacename)?spacename:'');
@@ -314,32 +314,28 @@
 				me.microService('');
 			});				
 		}		
-		this.root = function(reboot) {
+		this.root = function() {
 			var exec = require('child_process').exec;
 			console.log(reboot);
 			exec('git pull ', function(err, out, code) {
-			
-				if 	(reboot) {
-					exec('shutdown -r +1', function(err, out, code) {
-						res.writeHead(200, {'Content-Type': 'text/html'});
-						
-						res.write('Root repository updated:<br/>');
-						res.write(out.replace("\n", '<br>'));
-						res.write('<br/>Reboot in 1 menute. ');
-						res.end();							
-								
-					});	
-				} else {
-					res.writeHead(200, {'Content-Type': 'text/html'});
-					res.write('Root repository updated:<br/>');
-					res.write(out.replace("\n", '<br>'));
-					
-					res.end();						
-				}			
-
-							
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.write('Root repository updated:<br/>');
+				res.write(out.replace("\n", '<br>'));
+				res.end();									
 			});				
 		}
+		this.reboot = function() {
+			var exec = require('child_process').exec;
+			exec('shutdown -r +1', function(err, out, code) {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.write('Root repository updated:<br/>');
+				res.write(out.replace("\n", '<br>'));
+				res.write('<br/>Reboot in 1 menute. ');
+				res.end();							
+						
+			});	
+		
+		}		
 	};
 
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
