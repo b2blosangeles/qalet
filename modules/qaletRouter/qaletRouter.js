@@ -36,8 +36,8 @@
 			res.end();			
 		}			
 		this.runApi = function(v, vhost) {
-				
-			return true;	
+	
+//			return true;	
 			var me = this;
 			var spacename = this.getSpacename(vhost);
 			var space_dir = env.root_path + '/_microservice/' + spacename;
