@@ -134,7 +134,7 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 	};	
 
 	$scope.loadDemo = function(v) {
-		$scope.$parent.progress('on', ' Load demp service ...');
+		$scope.$parent.progress('on', ' Load demo service ...');
 		$http({
 		  method: 'POST',
 		  url: '/_git/loadDemo',
