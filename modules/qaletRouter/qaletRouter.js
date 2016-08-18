@@ -116,12 +116,9 @@
 			}
 			
 			var tp = this.requestType();
-			res.send(tp);
-			return false;
-			
-			
+
 			if (tp !== false) {
-				this.runApi(tp, runApi);
+				this.runApi(tp, vhost);
 				return true;
 			}
 			
