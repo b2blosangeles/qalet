@@ -27,7 +27,7 @@ app.controller('mainController', function($rootScope, $scope, $location, $http, 
 		});			
 		
 	}
-
+	
 	$scope.progress = function(code, message) {
 		$scope.progress_message = message;
 		if (code == 'on') {
@@ -63,6 +63,29 @@ app.config(function($routeProvider) {
 
 
 app.controller('microservicesController', function($rootScope, $scope, $location, $http, $cookies, $timeout, $sce){ 
+
+
+	$scope.rebootServer = function() {
+		$scope.$parent.progress('on', ' Sending reboot request ') + ' ...');
+		$http({
+		  method: 'GET',
+		  url: '/_git/reboot')
+		}).then(function successCallback(response) {
+			$scope.$parent.progress('off');
+			$scope.$parent.popup('on', {
+				title:'Success',
+				body: $sce.trustAsHtml(response.data)
+			});				
+		  }, function errorCallback(response) {
+				$scope.progress('off');
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response)
+				});						
+			});				
+		
+	}	
+	
 
 	$scope.updateGit = function(v) {
 		$scope.$parent.progress('on', 'Git pull ' + ((v)?v:' All seervices ') + ' ...');

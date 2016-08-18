@@ -259,12 +259,16 @@
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			
-			_f['S_root'] = function(cbk) {
-				exec('git pull', function(err, out, code) {
-					var msg = '<b>Updated root repository</b>:<br>' + out;
-					cbk(msg.replace("\n", '<br>'));
-				});
+			if (!v) {
+				_f['S_root'] = function(cbk) {
+					exec('git pull', function(err, out, code) {
+						var msg = '<b>Updated root repository</b>:<br>' + out;
+						cbk(msg.replace("\n", '<br>'));
+					});
+				}				
+				
 			}
+
 			
 			for (var i = 0; i < vhost.length; i++) {
 				if (!v || v == vhost[i].name) {
