@@ -132,6 +132,24 @@ app.controller('microservicesController', function($rootScope, $scope, $location
 				});						
 			});			
 	};	
+
+	$scope.loadDemo = function(v) {
+		$scope.$parent.progress('on', ' Load demp service ...');
+		$http({
+		  method: 'POST',
+		  url: '/_git/loadDemo',
+		  data: v
+		}).then(function successCallback(response) {
+			$scope.$parent.progress('fastoff');
+			$scope.listVhost();
+		  }, function errorCallback(response) {	
+				$scope.$parent.progress('fastoff');
+				$scope.popup('on', {
+					title:'Error!',
+					body: $sce.trustAsHtml(response.data)
+				});						
+			});			
+	};	
 	
 	$scope.editVhost = function(v) {
 		if (v === false) delete $scope.form;
