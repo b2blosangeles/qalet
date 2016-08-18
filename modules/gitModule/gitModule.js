@@ -332,7 +332,7 @@
 			var exec = require('child_process').exec;
 			exec('shutdown -r +1', function(err, out, code) {});	
 			res.writeHead(200, {'Content-Type': 'text/html'});
-			res.write('<br/>Server will reboot in one menute. ');
+			res.write('<br/>Server will reboot in one minute. ');
 			res.end();			
 		
 		}		
