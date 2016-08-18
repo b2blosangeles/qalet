@@ -166,8 +166,20 @@
 						pkg.db.vhost.find({ "name": vhost[i]['name']}, function (err, docs) {
 							if (!docs || !docs[0]) {
 								pkg.db.vhost.insert(vhost[i], function (err) {
-									cbk(true);
-								});					  
+									pkg.fs.exists('_microservice/'+ vhost[i]['name'], function(exists) {
+										if (exists) {
+											exec('cd ' + '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
+												var msg = out;
+												cbk(msg.replace("\n", '<br>'));
+											});
+										} else {
+											exec('git clone ' + vhost[i].repository + ' ' + '_microservice/'+ vhost[i]['name'] + '', function(err, out, code) {
+												var msg =  out;
+												cbk(msg.replace("\n", '<br>'));
+											});
+										}
+									});										
+								});			
 							} else {
 								cbk(true);
 							}
