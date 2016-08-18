@@ -23,7 +23,11 @@
 					<td>{{value.repository}}</td>
 					<td>{{value.status}}</td>
 					<td>{{(value.is_demo)?'Demo':''}}</td>
-					<th><a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh" aria-hidden="true"></i></a></th>
+					<th>
+						<a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+						&nbsp;
+						<i class="fa fa-check text-success" aria-hidden="true" ng-if="value.ready"></i>
+					</th>
 				  </tr>
 				</tbody>
 			  </table>	
