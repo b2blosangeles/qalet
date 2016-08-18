@@ -8,8 +8,9 @@
 				  <tr>
 					<th></th>
 					<th>Name</th>
-					<th>Domain</th>
 					<th>Demo</th>
+					<th>Domain</th>
+					
 					<th>GIT</th>
 					<th>Refresh</th>
 					<th>Status</th>
@@ -19,8 +20,8 @@
 				  <tr ng-repeat="(key, value) in microservice_list">
 					<td><a href="JavaScript:void(0)" ng-click="removeVhost(value)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 					<td>{{value.name}} <a href="JavaScript:void(0)" ng-click="editVhost(value)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-					<td>{{value.domain}}</td>
 					<td align="center">{{(value.is_demo)?'Y':''}}</td>
+					<td>{{value.domain}}</td>
 					<td>{{value.repository}}</td>
 					<td align="center"><a href="JavaScript:void(0)" ng-click="updateGit(value.name)"><i class="fa fa-refresh" aria-hidden="true"></i></a></td>
 					<td align="center">
