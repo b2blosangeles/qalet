@@ -1,5 +1,5 @@
 var path = require('path');
-console.log( path.join(__dirname, '../', 'package'));
+console.log( path.join(__dirname, '../../', 'package'));
 /*
 var assert = require('assert');
 describe('Array', function() {
