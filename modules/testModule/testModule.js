@@ -1,5 +1,6 @@
 var path = require('path');
-console.log( path.join(__dirname, '../../', 'package'));
+require( path.join(__dirname, '../../', 'package/mocha') );
+console.log(aaa);
 /*
 var assert = require('assert');
 describe('Array', function() {
