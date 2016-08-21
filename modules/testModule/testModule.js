@@ -1,3 +1,5 @@
+console.log(__dirname);
+
 var assert = require('assert');
 describe('Array', function() {
   describe('#indexOf()', function() {
