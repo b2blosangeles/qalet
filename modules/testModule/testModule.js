@@ -1,5 +1,5 @@
 var path = require('path');
-require( path.join(__dirname, '../../', 'package/mocha/node_modules/mocha') );
+var mocha = new  require( path.join(__dirname, '../../', 'package/mocha/node_modules/mocha') );
 
 var assert = require('assert');
 describe('Array', function() {
