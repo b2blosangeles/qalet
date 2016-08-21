@@ -14,5 +14,5 @@ process.stdout.write = function(str) {
 
 mocha.run(function(failures) {
   process.stdout.write = write;
-  console.log(JSON.parse(output).failures)
+  console.log(JSON.parse(output))
 });
