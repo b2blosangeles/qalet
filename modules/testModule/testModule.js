@@ -1,5 +1,5 @@
 var path = require('path');
-require( path.join(__dirname, '../../', 'package/mocha') );
+require( path.join(__dirname, '../../', 'package/mocha/modules/mocha') );
 console.log('aaa');
 /*
 var assert = require('assert');
