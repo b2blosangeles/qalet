@@ -1,4 +1,5 @@
-console.log(__dirname);
+var path = require('path');
+console.log( path.join(__dirname, '../', 'package'));
 /*
 var assert = require('assert');
 describe('Array', function() {
