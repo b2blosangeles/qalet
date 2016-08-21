@@ -1,11 +1,18 @@
 var path = require('path');
-var mocha = new  require( path.join(__dirname, '../../', 'package/mocha/node_modules/mocha') );
 
-var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
-    });
-  });
+var Mocha = require('path.join(__dirname, '../../', 'package/mocha/node_modules/mocha')');
+
+var mocha = new Mocha;
+mocha.addFile('tt.js');
+mocha.reporter('json');
+
+var write = process.stdout.write;
+var output = '';
+process.stdout.write = function(str) {
+  output += str;
+};
+
+mocha.run(function(failures) {
+  process.stdout.write = write;
+  console.log(JSON.parse(output).failures)
 });
