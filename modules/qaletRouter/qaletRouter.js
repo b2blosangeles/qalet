@@ -89,7 +89,7 @@
 			var space_dir = env.root_path + '/_microservice/' + spacename;
 			var p = space_dir + '/test/' + v;
 			
-			res.send(__dirname + 'tt.js');
+			res.send(p);
 			return true;
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
