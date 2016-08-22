@@ -96,9 +96,6 @@
 
 							var path = require('path');
 						
-							res.send(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
-							return true;
-							
 							var Mocha = require(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
 
 							var mocha = new Mocha;
