@@ -93,7 +93,28 @@
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
 						 if (stats.isFile()) {
-							
+
+							var path = require('path');
+							res.send()
+							var Mocha = require(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
+
+							var mocha = new Mocha;
+							mocha.addFile(__dirname + 'tt.js');
+							mocha.reporter('json');
+
+							var write = process.stdout.write;
+							var output = '';
+							process.stdout.write = function(str) {
+							  output += str;
+							};
+
+							mocha.run(function(failures) {
+							  process.stdout.write = write;
+							  console.log(JSON.parse(output))
+							});
+
+
+						 /*
 							try {
 								delete require.cache[p];
 								var taskClass = require(p);
@@ -120,10 +141,11 @@
 									}
 								});								
 							}		
-
+						*/	
 						 } else {
 							me.send404(req.params[0]);									 
 						 }
+						) 
 					});									
 				} else {
 					me.send404(req.params[0]);						
