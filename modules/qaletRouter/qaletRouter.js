@@ -99,6 +99,8 @@
 							var Mocha = require(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
 
 							var mocha = new Mocha;
+							res.send(__dirname + 'tt.js');
+							return true;
 							mocha.addFile(__dirname + 'tt.js');
 							mocha.reporter('json');
 
