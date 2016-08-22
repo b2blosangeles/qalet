@@ -82,6 +82,55 @@
 				} 
 			});	
 		}	
+
+		this.runTest = function(v, vhost) {
+			var me = this;
+			var spacename = this.getSpacename(vhost);
+			var space_dir = env.root_path + '/_microservice/' + spacename;
+			var p = space_dir + '/test/' + v;
+			
+			pkg.fs.exists(p, function(exists) {
+				if (exists) {
+					pkg.fs.stat(p, function(err, stats) {
+						 if (stats.isFile()) {
+							
+							try {
+								delete require.cache[p];
+								var taskClass = require(p);
+							
+								var entity = new taskClass(pkg, env, req, res);
+							
+								entity.call();
+							} catch(err) {
+								pkg.fs.readFile(p, 'utf8', function(err, code) {
+									if (!err) {
+										try {
+											var localenv = {
+												vhost_code: spacename,
+												root_path:env.root_path,
+												space_path:space_dir
+											}
+											new Function('require', 'pkg', 'env', 'req', 'res', code)
+											(require, pkg, localenv, req, res);
+										} catch(err) {
+											me.send500(err);
+										}
+									} else {
+										me.send500(err);										
+									}
+								});								
+							}		
+
+						 } else {
+							me.send404(req.params[0]);									 
+						 }
+					});									
+				} else {
+					me.send404(req.params[0]);						
+				} 
+			});	
+		}	
+		
 		
 		this.load = function() {
 			var me = this;
@@ -116,7 +165,7 @@
 				if (tp[1] == 'api') {
 					this.runApi(tp[2], vhost);
 				} else {
-					res.send(tp);
+					this.runTest(tp[2], vhost);
 				}
 				
 				return true;
