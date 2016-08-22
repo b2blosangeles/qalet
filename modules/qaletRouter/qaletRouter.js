@@ -15,12 +15,13 @@
 		}
 		
 		this.requestType = function() {
-			var patt = new RegExp('^/api/(.+|)', 'i');
+			var patt = new RegExp('^/(api|test)/(.+|)', 'i');
 			
 			if (req.params[0]) {
 				var v = req.params[0].match(patt);
 				if (v) {
-					return v[1];
+					res.send(v);
+					return v;
 				} 
 			} 
 			return false;
@@ -113,7 +114,7 @@
 			var tp = this.requestType();
 
 			if (tp !== false) {
-				this.runApi(tp, vhost);
+				this.runApi(tp[2], vhost);
 				return true;
 			}
 			
