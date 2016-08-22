@@ -20,7 +20,6 @@
 			if (req.params[0]) {
 				var v = req.params[0].match(patt);
 				if (v) {
-					res.send(v);
 					return v;
 				} 
 			} 
@@ -114,7 +113,12 @@
 			var tp = this.requestType();
 
 			if (tp !== false) {
-				this.runApi(tp[2], vhost);
+				if (tp[1] == 'api') {
+					this.runApi(tp[2], vhost);
+				} else {
+					res.send(tp);
+				}
+				
 				return true;
 			}
 			
