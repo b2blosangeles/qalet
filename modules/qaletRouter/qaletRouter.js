@@ -145,7 +145,6 @@
 						 } else {
 							me.send404(req.params[0]);									 
 						 }
-						) 
 					});									
 				} else {
 					me.send404(req.params[0]);						
