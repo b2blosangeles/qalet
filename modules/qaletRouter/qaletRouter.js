@@ -93,14 +93,9 @@
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
 						 if (stats.isFile()) {
-
 							var path = require('path');
-						
 							var Mocha = require(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
-
 							var mocha = new Mocha;
-							
-							
 							mocha.addFile(p);
 							mocha.reporter('json');
 
