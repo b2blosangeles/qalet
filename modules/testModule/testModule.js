@@ -1,9 +1,10 @@
 var path = require('path');
-
-var Mocha = require(path.join(__dirname, '../../', 'package/mocha/node_modules/mocha'));
+res.send(__dirname + 'tt.js');
+return true;
+var Mocha = require(path.join(root_path, '/package/mocha/node_modules/mocha'));
 
 var mocha = new Mocha;
-mocha.addFile('tt.js');
+mocha.addFile(__dirname + 'tt.js');
 mocha.reporter('json');
 
 var write = process.stdout.write;
