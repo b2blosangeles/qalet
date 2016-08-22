@@ -112,7 +112,7 @@
 
 							mocha.run(function(failures) {
 							  process.stdout.write = write;
-							  console.log(JSON.parse(output))
+							  res.send(JSON.parse(output))
 							});
 
 
