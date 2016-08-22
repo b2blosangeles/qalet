@@ -114,36 +114,6 @@
 							  process.stdout.write = write;
 							  res.send(JSON.parse(output))
 							});
-
-
-						 /*
-							try {
-								delete require.cache[p];
-								var taskClass = require(p);
-							
-								var entity = new taskClass(pkg, env, req, res);
-							
-								entity.call();
-							} catch(err) {
-								pkg.fs.readFile(p, 'utf8', function(err, code) {
-									if (!err) {
-										try {
-											var localenv = {
-												vhost_code: spacename,
-												root_path:env.root_path,
-												space_path:space_dir
-											}
-											new Function('require', 'pkg', 'env', 'req', 'res', code)
-											(require, pkg, localenv, req, res);
-										} catch(err) {
-											me.send500(err);
-										}
-									} else {
-										me.send500(err);										
-									}
-								});								
-							}		
-						*/	
 						 } else {
 							me.send404(req.params[0]);									 
 						 }
