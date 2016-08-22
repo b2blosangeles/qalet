@@ -89,6 +89,8 @@
 			var space_dir = env.root_path + '/_microservice/' + spacename;
 			var p = space_dir + '/test/' + v;
 			
+			res.send(__dirname + 'tt.js');
+			return true;
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
@@ -99,8 +101,8 @@
 							var Mocha = require(path.join(env.root_path, '/package/mocha/node_modules/mocha'));
 
 							var mocha = new Mocha;
-							res.send(__dirname + 'tt.js');
-							return true;
+							
+							
 							mocha.addFile(__dirname + 'tt.js');
 							mocha.reporter('json');
 
