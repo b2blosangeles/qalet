@@ -24,15 +24,15 @@ var pkg = {
 pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 	if (!err) {
 		for (var i=0; i < docs.length; i++) {
-			var _f = function(i) {
+			var _f = function(v) {
 				return function() {
-					pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
+					pkg.fs.exists(env.root_space + '_microservice/' + v['name'], function(exists) {
 						if (exists) {
-							exec('cd ' + env.root_space + '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
-								console.log('----------------->'+ env.root_space + '_microservice/'+ vhost[i]['name'] + '::' + out );
+							exec('cd ' + env.root_space + '_microservice/' + v['name'] + '&& git pull', function(err, out, code) {
+								console.log('----------------->'+ env.root_space + '_microservice/'+ v['name'] + '::' + out );
 							});
 						} else {
-							console.log('-----SKIPPED--------->'+ env.root_space + '_microservice/'+ vhost[i]['name']);
+							console.log('-----SKIPPED--------->'+ env.root_space + '_microservice/'+ v['name']);
 						}
 					});	
 				}
@@ -40,7 +40,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 				
 			};
 		
-			_f(i)();
+			_f(vhost[i])();
 			
 			console.log( docs[i].name);
 			/*
