@@ -11,6 +11,7 @@ for (var i = 0; i < cron.length; i++) {
 				console.log('===>running GC1');
 				global.gc();
 			} 
+			/*
 			exec('cd ' + env.APPLICATION_DIRECTORY + '/_master &&  ' + v, function(error, stdout, stderr) {
 				console.log('running cd ' + env.APPLICATION_DIRECTORY + '/_master && ' + v);
 				if (global.gc) {
@@ -18,6 +19,7 @@ for (var i = 0; i < cron.length; i++) {
 					global.gc();
 				}
 			});
+			*/
 		}
 	};
 	if (manager.exists( cron[i]['id'])) {
