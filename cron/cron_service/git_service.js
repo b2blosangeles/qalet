@@ -49,8 +49,8 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 					});						
 					
 				}
-			}				
-		})(i);
+			})(i);				
+		}
 	} 
 	CP.serial(
 		_f,
