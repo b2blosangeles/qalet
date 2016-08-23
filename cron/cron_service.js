@@ -25,6 +25,8 @@ for (var i = 0; i < cron.length; i++) {
 	if (manager.exists( cron[i]['id'])) {
 		manager.stop( cron[i]['id']);
 	}
+	console.log(cron[i].script);
+	
 	if (cron[i].script) {
 		if (!manager.exists( cron[i]['id'])) {
 			
