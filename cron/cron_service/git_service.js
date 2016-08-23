@@ -22,7 +22,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	
 	var _f = {};			
 			
-	_f[root] = function(cbk) {
+	_f['root'] = function(cbk) {
 		
 		exec('cd ' + env.root_space + ' && git pull', function(error, stdout, stderr) {
 			cbk({stdout:stdout, stderr:stderr});
