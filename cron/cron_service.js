@@ -2,7 +2,6 @@ var CronJobManager = require('./crontab_manager.js');
 var manager = new CronJobManager();
 var exec = require('child_process').exec;
 var cron = require('./cron.json'), fs    = require('fs')
-//var env = require('../../_config/env.json');
 
 for (var i = 0; i < cron.length; i++) {
 	var f = function(v) {
@@ -13,9 +12,8 @@ for (var i = 0; i < cron.length; i++) {
 				global.gc();
 			} 
 			
-		
 			exec('cd ' + __dirname + ' &&  ' + v, function(error, stdout, stderr) {
-				console.log('running cd ' + __dirname + ' && ' + v);
+				console.log('running -- cd ' + __dirname + ' && ' + v + ' stdout: ' + stdout + ' stderr:' +  stderr);
 				if (global.gc) {
 					console.log('===>running GC2');
 					global.gc();
@@ -37,6 +35,5 @@ for (var i = 0; i < cron.length; i++) {
 			manager.deleteJob( cron[i]['id']);
 		}
 		manager.start( cron[i]['id']);
-		console.log(cron[i]);
 	}	
 }
