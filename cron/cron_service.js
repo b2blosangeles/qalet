@@ -6,19 +6,8 @@ var cron = require('./cron.json'), fs    = require('fs')
 for (var i = 0; i < cron.length; i++) {
 	var f = function(v) {
 		return function() {
-			
-			if (global.gc) {
-				console.log('===>running GC2');
-				global.gc();
-			} 
-			
 			exec('cd ' + __dirname + ' &&  ' + v, function(error, stdout, stderr) {
-				console.log({stdout:stdout, stderr:stderr})
-				// console.log('running -- cd ' + __dirname + ' && ' + v + ' stdout: ' + stdout + ' stderr:' +  stderr);
-				if (global.gc) {
-					console.log('===>running GC2');
-					global.gc();
-				}
+				console.log(JSON.stringify({result:stdout, err:stderr}));
 			});
 			
 		}
