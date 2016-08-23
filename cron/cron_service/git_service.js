@@ -28,7 +28,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 				return function() {
 					pkg.fs.exists(env.root_space + '_microservice/'+ vhost[i]['name'], function(exists) {
 						if (exists) {
-							exec('cd ' + env.root_space '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
+							exec('cd ' + env.root_space + '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
 								console.log('----------------->'+ env.root_space '_microservice/'+ vhost[i]['name'] + '::' + out );
 							});
 						} else {
