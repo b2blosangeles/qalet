@@ -2,7 +2,7 @@ var exec = require('child_process').exec;
 var path = require('path');
 var Nedb = require('../../package/nedb/node_modules/nedb');
 
-var env = path.join(__dirname, '../..');
+var env = {root_space:path.join(__dirname, '../../')};
 console.log(env);
 
 var pkg = {
