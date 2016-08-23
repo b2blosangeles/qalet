@@ -36,18 +36,21 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	if (!err) {
 		for (var i=0; i < vhost.length; i++) {
 			
-			_f['C'+i] = function(cbk) {
-				pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
-					if (exists) {
-						exec('cd ' + env.root_space + '_microservice/' + vhost[i]['name'] + '&& git pull', function(err, out, code) {
-							cbk(vhost[i]['name'] + '::' + out);
-						});
-					} else {
-						cbk(vhost[i]['name'] + 'SKIPPED');
-					}
-				});					
+			_f['C'+i] = (function(i) {
+				return function(cbk) {
+					pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
+						if (exists) {
+							exec('cd ' + env.root_space + '_microservice/' + vhost[i]['name'] + '&& git pull', function(err, out, code) {
+								cbk(vhost[i]['name'] + '::' + out);
+							});
+						} else {
+							cbk(vhost[i]['name'] + 'SKIPPED');
+						}
+					});						
+					
+				}
 			}				
-		}
+		})(i);
 	} 
 	CP.serial(
 		_f,
