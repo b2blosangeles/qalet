@@ -26,7 +26,7 @@ var _f = function() {
 				exec('chmod +x /etc/init.d/qalet_node');
 				exec('update-rc.d qalet_node defaults');
 
-				var bufB = fs.readFileSync(cfg.APPLICATION_DIRECTORY+'/script_template/node_cron' , "utf8");
+				var bufB = fs.readFileSync(__dirname+'/script_template/node_cron' , "utf8");
 				
 				fs.writeFileSync('/etc/init.d/qalet_cron', bufB.replace(/{\$APPLICATION_DIRECTORY}/, __dirname+'/cron'));
 				exec('chmod +x /etc/init.d/qalet_cron');
