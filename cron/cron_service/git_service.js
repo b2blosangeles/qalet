@@ -6,10 +6,10 @@ var pkg = {
 	fs 			: require('fs'),
 	Nedb 		: require('../../package/nedb/node_modules/nedb'),
 	db 			: {
-					post_cache 	: new Nedb({ filename:  '_db/post_cache.db', autoload: true }),
-					get_cache 	: new Nedb({ filename:  '_db/get_cache.db', autoload: true }),
-					auth	: new Nedb({ filename: '_db/auth.db', autoload: true }),
-					vhost	: new Nedb({ filename: '_db/vhost.db', autoload: true })
+					post_cache 	: new Nedb({ filename:  '../../_db/post_cache.db', autoload: true }),
+					get_cache 	: new Nedb({ filename:  '../../_db/get_cache.db', autoload: true }),
+					auth	: new Nedb({ filename: '../../_db/auth.db', autoload: true }),
+					vhost	: new Nedb({ filename: '../../_db/vhost.db', autoload: true })
 				}
 				
 };
