@@ -2,21 +2,21 @@ var exec = require('child_process').exec;
 var path = require('path');
 var env = {root_space:path.join(__dirname, '../../')};
 
-var Nedb = require(env.root_spaec + 'package/nedb/node_modules/nedb');
+var Nedb = require(env.root_space + 'package/nedb/node_modules/nedb');
 
 
 console.log(env);
 
 var pkg = {
-	crowdProcess:require(env.root_spaec + 'package/crowdProcess/crowdProcess'),
-	request		:require(env.root_spaec + 'package/request/node_modules/request'),
+	crowdProcess:require(env.root_space + 'package/crowdProcess/crowdProcess'),
+	request		:require(env.root_space + 'package/request/node_modules/request'),
 	fs 			: require('fs'),
-	Nedb 		: require(env.root_spaec + 'package/nedb/node_modules/nedb'),
+	Nedb 		: require(env.root_space + 'package/nedb/node_modules/nedb'),
 	db 			: {
-					post_cache 	: new Nedb({ filename:  env.root_spaec + '_db/post_cache.db', autoload: true }),
-					get_cache 	: new Nedb({ filename:  env.root_spaec + '_db/get_cache.db', autoload: true }),
-					auth	: new Nedb({ filename: env.root_spaec + '_db/auth.db', autoload: true }),
-					vhost	: new Nedb({ filename: env.root_spaec + '_db/vhost.db', autoload: true })
+					post_cache 	: new Nedb({ filename:  env.root_space + '_db/post_cache.db', autoload: true }),
+					get_cache 	: new Nedb({ filename:  env.root_space + '_db/get_cache.db', autoload: true }),
+					auth	: new Nedb({ filename: env.root_space + '_db/auth.db', autoload: true }),
+					vhost	: new Nedb({ filename: env.root_space + '_db/vhost.db', autoload: true })
 				}
 				
 };
