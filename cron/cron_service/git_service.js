@@ -1,4 +1,4 @@
-
+var exec = require('child_process').exec;
 /*
 var fs    = require('fs');
 var net = require('net');
@@ -204,4 +204,7 @@ exec('cd ' + env.APPLICATION_DIRECTORY+'/_vhost_config' + ' &&  git pull && '+
 	 });
 	 
 */
-console.log(new Date().toString() + '---');	 
+exec('cd ' + __dirname + ' &&  git pull', function(error, stdout, stderr) {
+	console.log({stdout:stdout, stderr:stderr})
+});
+console.log(new Date().toString() + '-A-');	 
