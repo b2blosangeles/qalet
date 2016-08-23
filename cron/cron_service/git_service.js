@@ -26,13 +26,13 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 		for (var i=0; i < docs.length; i++) {
 			var _f = function(i) {
 				return function() {
-					pkg.fs.exists(env.root_space + '_microservice/'+ vhost[i]['name'], function(exists) {
+					pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
 						if (exists) {
 							exec('cd ' + env.root_space + '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
-								console.log('----------------->'+ env.root_space '_microservice/'+ vhost[i]['name'] + '::' + out );
+								console.log('----------------->'+ env.root_space + '_microservice/'+ vhost[i]['name'] + '::' + out );
 							});
 						} else {
-							console.log('-----SKIPPED--------->'+ env.root_space '_microservice/'+ vhost[i]['name']);
+							console.log('-----SKIPPED--------->'+ env.root_space + '_microservice/'+ vhost[i]['name']);
 						}
 					});	
 				}
