@@ -31,8 +31,6 @@ var _f = function() {
 				exec('chmod +x /etc/init.d/qalet_cron');
 				exec('update-rc.d qalet_cron defaults');
 
-				 
-						
 				console.log('Build done. Need reboot ');
 			//	exec('reboot');
 			}
