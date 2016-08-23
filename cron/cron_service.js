@@ -35,6 +35,6 @@ for (var i = 0; i < cron.length; i++) {
 			manager.deleteJob( cron[i]['id']);
 		}
 		manager.start( cron[i]['id']);
-		console.log('---' + cron[i].script);
+		console.log(cron[i]);
 	}	
 }
