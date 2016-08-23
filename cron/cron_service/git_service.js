@@ -24,7 +24,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	
 	var _f = {};			
 			
-	_f['D0'] = function(cbk) {
+	_f[root] = function(cbk) {
 		
 		exec('cd ' + env.root_space + ' && git pull', function(error, stdout, stderr) {
 			cbk({stdout:stdout, stderr:stderr});
@@ -36,7 +36,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	if (!err) {
 		for (var i=0; i < vhost.length; i++) {
 			
-			_f['C'+i] = (function(i) {
+			_f[vhost[i]['name']] = (function(i) {
 				return function(cbk) {
 					pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
 						if (exists) {
@@ -51,7 +51,11 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 				}
 			})(i);				
 		}
-	} 
+	} else {
+		_f['vhost'] = function() {
+			cbk([]);
+		}
+	}
 	CP.serial(
 		_f,
 		function(data) {
