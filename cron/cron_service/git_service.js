@@ -15,6 +15,7 @@ var pkg = {
 };
 
 pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
+	console.log( docs);
 	if (!err) {
 		for (var i=0; i < docs.length; i++) {
 			console.log( docs[i]);
