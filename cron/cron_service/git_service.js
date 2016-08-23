@@ -1,5 +1,10 @@
 var exec = require('child_process').exec;
+var path = require('path');
 var Nedb = require('../../package/nedb/node_modules/nedb');
+
+var env = path.join(__dirname, '../..');
+console.log(env);
+
 var pkg = {
 	crowdProcess:require('../../package/crowdProcess/crowdProcess'),
 	request		:require('../../package/request/node_modules/request'),
@@ -18,8 +23,11 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 	if (!err) {
 		for (var i=0; i < docs.length; i++) {
 			console.log( docs[i].repository);
-			
-			
+			/*
+			exec('cd ' + __dirname + ' && git pull', function(error, stdout, stderr) {
+				console.log({stdout:stdout, stderr:stderr})
+			});			
+			*/
 			
 		}
 	} else {
