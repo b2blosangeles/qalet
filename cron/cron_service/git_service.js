@@ -40,7 +40,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 				
 			};
 		
-			_f(i);
+			_f(i)();
 			
 			console.log( docs[i].name);
 			/*
