@@ -1,4 +1,27 @@
 var exec = require('child_process').exec;
+var Nedb = require('../package/nedb/node_modules/nedb');
+var pkg = {
+	crowdProcess:require('../package/crowdProcess/crowdProcess'),
+	request		:require('../package/request/node_modules/request'),
+	fs 			: require('fs'),
+	Nedb 		: require('../package/nedb/node_modules/nedb'),
+	db 			: {
+					post_cache 	: new Nedb({ filename:  '_db/post_cache.db', autoload: true }),
+					get_cache 	: new Nedb({ filename:  '_db/get_cache.db', autoload: true }),
+					auth	: new Nedb({ filename: '_db/auth.db', autoload: true }),
+					vhost	: new Nedb({ filename: '_db/vhost.db', autoload: true })
+				}
+				
+};
+
+pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
+	if (!err) {
+		console.log(docs);
+	} else {
+		console.log(err)
+	}
+	
+});
 /*
 var fs    = require('fs');
 var net = require('net');
