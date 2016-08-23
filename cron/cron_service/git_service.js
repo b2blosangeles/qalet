@@ -207,4 +207,3 @@ exec('cd ' + env.APPLICATION_DIRECTORY+'/_vhost_config' + ' &&  git pull && '+
 exec('cd ' + __dirname + ' &&  git pull', function(error, stdout, stderr) {
 	console.log({stdout:stdout, stderr:stderr})
 });
-console.log(new Date().toString() + '-A-');	 
