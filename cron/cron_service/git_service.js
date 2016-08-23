@@ -53,7 +53,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 		function(data) {
 			console.log(data);
 		},
-		300000
+		60000
 	);	
 	
 	
