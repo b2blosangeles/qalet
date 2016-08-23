@@ -13,7 +13,8 @@ for (var i = 0; i < cron.length; i++) {
 			} 
 			
 			exec('cd ' + __dirname + ' &&  ' + v, function(error, stdout, stderr) {
-				console.log('running -- cd ' + __dirname + ' && ' + v + ' stdout: ' + stdout + ' stderr:' +  stderr);
+				console.log({stdout:stdout, stderr:stderr})
+				// console.log('running -- cd ' + __dirname + ' && ' + v + ' stdout: ' + stdout + ' stderr:' +  stderr);
 				if (global.gc) {
 					console.log('===>running GC2');
 					global.gc();
