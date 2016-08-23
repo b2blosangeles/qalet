@@ -24,7 +24,25 @@ var pkg = {
 pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 	if (!err) {
 		for (var i=0; i < docs.length; i++) {
-			console.log( docs[i].repository);
+			var _f = function(i) {
+				return function() {
+					pkg.fs.exists(env.root_space + '_microservice/'+ vhost[i]['name'], function(exists) {
+						if (exists) {
+							exec('cd ' + env.root_space '_microservice/'+ vhost[i]['name'] + '&& git pull', function(err, out, code) {
+								console.log('----------------->'+ env.root_space '_microservice/'+ vhost[i]['name'] + '::' + out );
+							});
+						} else {
+							console.log('-----SKIPPED--------->'+ env.root_space '_microservice/'+ vhost[i]['name']);
+						}
+					});	
+				}
+					
+				
+			};
+		
+			_f(i);
+			
+			console.log( docs[i].name);
 			/*
 			exec('cd ' + __dirname + ' && git pull', function(error, stdout, stderr) {
 				console.log({stdout:stdout, stderr:stderr})
