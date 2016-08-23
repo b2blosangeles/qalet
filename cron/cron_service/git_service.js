@@ -204,4 +204,4 @@ exec('cd ' + env.APPLICATION_DIRECTORY+'/_vhost_config' + ' &&  git pull && '+
 	 });
 	 
 */
-console.log(new Date());	 
+console.log(new Date().toString() + '---');	 
