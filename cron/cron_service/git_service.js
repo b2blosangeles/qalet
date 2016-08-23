@@ -22,6 +22,11 @@ var pkg = {
 };
 
 pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
+	
+	exec('cd ' + __dirname + ' && git pull', function(error, stdout, stderr) {
+		console.log({stdout:stdout, stderr:stderr})
+	});	
+	
 	if (!err) {
 		for (var i=0; i < docs.length; i++) {
 			var _f = function(v) {
@@ -47,6 +52,3 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 	}
 });
 
-exec('cd ' + __dirname + ' && git pull', function(error, stdout, stderr) {
-	console.log({stdout:stdout, stderr:stderr})
-});
