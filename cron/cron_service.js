@@ -7,10 +7,10 @@ var cron = require('./cron.json'), fs    = require('fs')
 for (var i = 0; i < cron.length; i++) {
 	var f = function(v) {
 		return function() {
-			//if (global.gc) {
-				console.log('===>running GC1');
-			//	global.gc();
-			//} 
+			if (global.gc) {
+				console.log('===>running GC2');
+				global.gc();
+			} 
 			/*
 			exec('cd ' + env.APPLICATION_DIRECTORY + '/_master &&  ' + v, function(error, stdout, stderr) {
 				console.log('running cd ' + env.APPLICATION_DIRECTORY + '/_master && ' + v);
