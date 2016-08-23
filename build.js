@@ -24,7 +24,14 @@ var _f = function() {
 						replace(/{\$APPLICATION_CODE}/, 'qalet_node')
 					);	
 				exec('chmod +x /etc/init.d/qalet_node');
-				exec('update-rc.d qalet_node defaults');				
+				exec('update-rc.d qalet_node defaults');
+
+
+				fs.writeFileSync('/etc/init.d/qalet_cron', bufB.replace(/{\$APPLICATION_DIRECTORY}/, __dirname+'/cron'));
+				exec('chmod +x /etc/init.d/qalet_cron');
+				exec('update-rc.d qalet_cron defaults');
+
+				 
 						
 				console.log('Build done. Need reboot ');
 			//	exec('reboot');
@@ -36,8 +43,6 @@ var _f = function() {
 	
 }
 
-	
-	
 
 
 
