@@ -1,7 +1,6 @@
 var exec = require('child_process').exec;
 var path = require('path');
 var env = {root_space:path.join(__dirname, '../../')};
-
 var Nedb = require(env.root_space + 'package/nedb/node_modules/nedb');
 
 
@@ -22,6 +21,8 @@ var pkg = {
 };
 
 pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
+	var CP = new pkg.crowdProcess();
+	
 	
 	exec('cd ' + __dirname + ' && git pull', function(error, stdout, stderr) {
 		console.log({stdout:stdout, stderr:stderr})
