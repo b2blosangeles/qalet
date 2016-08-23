@@ -2,7 +2,7 @@ var CronJobManager = require('./crontab_manager.js');
 var manager = new CronJobManager();
 var exec = require('child_process').exec;
 var cron = require('./cron.json'), fs    = require('fs')
-var env = require('../../_config/env.json');
+//var env = require('../../_config/env.json');
 
 for (var i = 0; i < cron.length; i++) {
 	var f = function(v) {
