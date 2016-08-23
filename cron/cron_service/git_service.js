@@ -32,7 +32,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	if (!err) {
 		for (var i=0; i < vhost.length; i++) {
 			
-			_f[vhost[i]['name']] = (function(i) {
+			_f['vhost_'+vhost[i]['name']] = (function(i) {
 				return function(cbk) {
 					pkg.fs.exists(env.root_space + '_microservice/' + vhost[i]['name'], function(exists) {
 						if (exists) {
@@ -48,7 +48,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 			})(i);				
 		}
 	} 
-	CP.serial(
+	CP.parallel(
 		_f,
 		function(data) {
 			console.log(data);
