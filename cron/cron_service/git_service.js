@@ -3,8 +3,6 @@ var path = require('path');
 var env = {root_space:path.join(__dirname, '../../')};
 var Nedb = require(env.root_space + 'package/nedb/node_modules/nedb');
 
-
-
 var pkg = {
 	crowdProcess:require(env.root_space + 'package/crowdProcess/crowdProcess'),
 	request		:require(env.root_space + 'package/request/node_modules/request'),
@@ -31,8 +29,6 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 		});						
 	}	
 	
-	console.log(vhost);
-
 	if (!err) {
 		for (var i=0; i < vhost.length; i++) {
 			
@@ -51,11 +47,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 				}
 			})(i);				
 		}
-	} else {
-		_f['vhost'] = function() {
-			cbk([]);
-		}
-	}
+	} 
 	CP.serial(
 		_f,
 		function(data) {
