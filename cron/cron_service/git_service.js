@@ -1,3 +1,5 @@
+
+/*
 var fs    = require('fs');
 var net = require('net');
 var exec = require('child_process').exec;
@@ -200,3 +202,6 @@ exec('cd ' + env.APPLICATION_DIRECTORY+'/_vhost_config' + ' &&  git pull && '+
 		console.log('done at git_service : ' +  new Date());
 					
 	 });
+	 
+*/
+console.log(new Date());	 
