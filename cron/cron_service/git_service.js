@@ -4,7 +4,6 @@ var env = {root_space:path.join(__dirname, '../../')};
 var Nedb = require(env.root_space + 'package/nedb/node_modules/nedb');
 
 
-console.log(env);
 
 var pkg = {
 	crowdProcess:require(env.root_space + 'package/crowdProcess/crowdProcess'),
@@ -32,6 +31,8 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 		});						
 	}	
 	
+	console.log(vhost);
+
 	if (!err) {
 		for (var i=0; i < vhost.length; i++) {
 			
