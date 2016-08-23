@@ -29,10 +29,10 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, docs) {
 					pkg.fs.exists(env.root_space + '_microservice/' + v['name'], function(exists) {
 						if (exists) {
 							exec('cd ' + env.root_space + '_microservice/' + v['name'] + '&& git pull', function(err, out, code) {
-								console.log('----------------->'+ env.root_space + '_microservice/'+ v['name'] + '::' + out );
+								console.log(v['name'] + '::' + out);
 							});
 						} else {
-							console.log('-----SKIPPED--------->'+ env.root_space + '_microservice/'+ v['name']);
+							console.log(v['name'] + 'SKIPPED');
 						}
 					});	
 				}
