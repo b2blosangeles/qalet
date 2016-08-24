@@ -55,7 +55,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 			pkg.db.git_log.remove({time:{ $lt : new Date(new Date().getTime() - 300000) }}, { multi: true }, function (err) {
 				pkg.db.git_log.insert({time: new Date(),  data:data}, function (err) {
 					if (err) console.log(err);
-					else console.log(tm.getTime());
+					else console.log('');
 				});
 			})				
 		},
