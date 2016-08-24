@@ -52,7 +52,9 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	CP.parallel(
 		_f,
 		function(data) {
-			 console.log(data);
+			pkg.db.git_log.insert({time: new Date(),  data:data}, function (err) {
+					console,log(err);
+			});
 		},
 		60000
 	);	
