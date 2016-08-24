@@ -52,7 +52,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	CP.parallel(
 		_f,
 		function(data) {
-			pkg.db.vhost.git_log({ time:  { $lt : new Date() }, { multi: true }, function (err) {
+			pkg.db.vhost.git_log({ time:  { $lt : new Date() }}, { multi: true }, function (err) {
 				cbk(err);
 			})				
 			
