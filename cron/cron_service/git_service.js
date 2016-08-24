@@ -52,7 +52,7 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	CP.parallel(
 		_f,
 		function(data) {
-			console.log(data);
+			// console.log(data);
 		},
 		60000
 	);	
