@@ -53,7 +53,8 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 		_f,
 		function(data) {
 			pkg.db.git_log.insert({time: new Date(),  data:data}, function (err) {
-					console.log(err);
+				if (err) console.log(err);
+				else console.log('');
 			});
 		},
 		60000
