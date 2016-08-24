@@ -52,6 +52,10 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 	CP.parallel(
 		_f,
 		function(data) {
+			pkg.db.vhost.git_log({ time:  { $lt : new Date() }, { multi: true }, function (err) {
+				cbk(err);
+			})				
+			
 			pkg.db.git_log.insert({time: new Date(),  data:data}, function (err) {
 				if (err) console.log(err);
 				else console.log('');
