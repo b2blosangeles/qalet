@@ -54,12 +54,12 @@ pkg.db.vhost.find({}).sort({ created: -1 }).exec(function (err, vhost) {
 		function(data) {
 			var tm = new Date();
 			// { $lt : new Date(tm.getTime() - 60000) }
-		//	pkg.db.git_log.remove({}, { multi: true }, function (err) {
+			pkg.db.git_log.remove({}, { multi: true }, function (err) {
 				pkg.db.git_log.insert({time: new Date().getTime(),  data:data}, function (err) {
 					if (err) console.log(err);
 					else console.log(tm.getTime());
 				});
-		//	})				
+			})				
 		},
 		60000
 	);	
