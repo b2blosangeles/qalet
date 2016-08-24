@@ -19,7 +19,8 @@ var pkg = {
 					post_cache 	: new Nedb({ filename:  '_db/post_cache.db', autoload: true }),
 					get_cache 	: new Nedb({ filename:  '_db/get_cache.db', autoload: true }),
 					auth	: new Nedb({ filename: '_db/auth.db', autoload: true }),
-					vhost	: new Nedb({ filename: '_db/vhost.db', autoload: true })
+					vhost	: new Nedb({ filename: '_db/vhost.db', autoload: true }),
+					git_log	: new Nedb({ filename: '_db/git_log.db', autoload: true })
 				}
 				
 }
