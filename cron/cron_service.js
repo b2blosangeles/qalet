@@ -7,7 +7,11 @@ for (var i = 0; i < cron.length; i++) {
 	var f = function(v) {
 		return function() {
 			exec('cd ' + __dirname + ' &&  ' + v, function(error, stdout, stderr) {
-				console.log(JSON.stringify({result:stdout, err:stderr}));
+				if (!stderr) {
+					console.log(JSON.stringify({status:'success', message:stdout}));
+				} else {
+					console.log(JSON.stringify({status:'error', message:stderr}));
+				}
 			});
 			
 		}
