@@ -112,6 +112,11 @@ app.post(/(.+)$/i, function (req, res) {
 	R.load();
 });
 
-app.listen(port);
-console.log('qalet server start on port ' + port + ' at ' + new Date() + '');
+
+var server = require('http').createServer(app);
+server.listen(port, function () {
+  console.log('Example app listening on port ' + port + '!');
+}); 
+//app.listen(port);
+//console.log('qalet server start on port ' + port + ' at ' + new Date() + '');
 
