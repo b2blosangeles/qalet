@@ -70,7 +70,7 @@ app.get(/cache(|[0-9]+)\/(\S+)$/i, function (req, res) {
 
 });
 
-app.get(/_cdn\/(.+)$/i, function (req, res) {
+app.get(/cdn\/(.+)$/i, function (req, res) {
 	res.send(req.params[0]);
 
 });
