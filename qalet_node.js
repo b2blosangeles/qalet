@@ -69,6 +69,12 @@ app.get(/cache(|[0-9]+)\/(\S+)$/i, function (req, res) {
 	return true;
 
 });
+
+app.get(/_cdn\/(.+)$/i, function (req, res) {
+	res.send(req.params[0]);
+
+});
+
 /*
 app.get(/_git\/(|[0-9a-z]+)$/i, function (req, res) {	
 	delete require.cache[__dirname + '/modules/gitModule/gitModule.js'];
